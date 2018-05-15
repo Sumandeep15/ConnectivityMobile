@@ -18,7 +18,7 @@ import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 import { Organizations } from '../providers/providers';
 import { Device } from '@ionic-native/device';
-import { StorageService,Connections,News,Schedule,Events } from '../providers/providers';
+import { StorageService,Connections,News,Schedule,Events,GlobalVars } from '../providers/providers';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -74,7 +74,7 @@ export function provideSettings(storage: Storage) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Organizations,
     Device,
-    StorageService,News,Schedule,Events,Connections
+    StorageService,News,Schedule,Events,Connections,GlobalVars
   ]
 })
 export class AppModule { }

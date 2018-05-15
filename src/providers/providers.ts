@@ -9,6 +9,8 @@ import { Events } from './Events/Events';
 import { Schedule } from './Schedule/Schedule';
 import { News } from './News/News';
 import { Services } from './Services/Services';
+import { GlobalVars } from './variables/variable';
+
 export {
   Api,
   Items,
@@ -18,5 +20,6 @@ export {
   StorageService,
   Connections,
   Events,
-  Schedule,News,Services
+  Schedule,News,Services,
+  GlobalVars
 };

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
-import { Organizations, StorageService, User } from '../../providers/providers';
+import { Organizations, StorageService, User,GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController } from 'ionic-angular';
 /**
@@ -32,6 +32,7 @@ export class OrganizationsPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
+       public GlobalVars: GlobalVars,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController) {
 
@@ -108,7 +109,8 @@ export class OrganizationsPage {
     this.currentItems.delete(item);
   }
   viewCompany(item) {
-    this.navCtrl.push("OrganizationDetailPage", { 'record': item })
+  this.GlobalVars.setMyGlobalVar(item);
+    this.navCtrl.push("TabsPage", { 'record': item })
   }
   /**
    * Navigate to the detail page for this item.

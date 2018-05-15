@@ -10,9 +10,9 @@ import { Tab1Root, Tab2Root, Tab3Root } from '../';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = Tab1Root;
-  tab2Root: any = Tab2Root;
-  tab3Root: any = Tab3Root;
+  tab1Root: any = "OrganizationDetailPage";
+  tab2Root: any = "EventsPage";
+  tab3Root: any = "SchedulePage";
 
   tab1Title = " ";
   tab2Title = " ";
@@ -20,9 +20,9 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController, public translateService: TranslateService) {
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
-      this.tab1Title = values['TAB1_TITLE'];
-      this.tab2Title = values['TAB2_TITLE'];
-      this.tab3Title = values['TAB3_TITLE'];
+      this.tab1Title ="About";
+      this.tab2Title = "Events";
+      this.tab3Title = "Schedule";
     });
   }
 }
