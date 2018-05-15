@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
-import { Organizations, StorageService,User } from '../../providers/providers';
+import { Organizations, StorageService, User } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
-import { MenuController } from 'ionic-angular';
+import { MenuController, LoadingController } from 'ionic-angular';
 /**
  * Generated class for the OrganizationsPage page.
  *
@@ -31,12 +31,25 @@ export class OrganizationsPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-public user :User,
+    public user: User,
     private device: Device,
-      public menu: MenuController,) {
-          this.menu.enable(true, 'menu1');
-      this.menu.enable(false, 'menu2');
+    public menu: MenuController, private loadingCtrl: LoadingController) {
+
+    let loadingPopup = this.loadingCtrl.create({
+      content: 'Processing...'
+    });
+    loadingPopup.present();//Loader
+    this.menu.enable(true, 'menu1');
+    this.menu.enable(false, 'menu2');
+
+
+
+
     this.Organizations.list().subscribe((resp: any) => {
+      setTimeout(() => {
+        loadingPopup.dismiss();
+      }, 500);
+
       if (!user.authenticated) {
         this.navCtrl.push("LoginPage");
       }
@@ -50,30 +63,29 @@ public user :User,
   }
 
 
- ionViewDidLoad() {
+  ionViewDidLoad() {
     $(".menu1hide").show();
-     $(".menu2hide").hide();
+    $(".menu2hide").hide();
     // console.log('ionViewDidLoad ConnectionsPage');
   }
-
+  delete(item: any) {
+    this.currentItems.splice(this.currentItems.indexOf(item), 1);
+  }
   addItem(item) {
+    let loadingPopup = this.loadingCtrl.create({
+      content: 'Processing...'
+    });
+    loadingPopup.present();//Loader
 
     this.AppUserModel.OrganizationId = item.id;
-    //alert(this.device.uuid);
-    // this.account.UUID = this.device.uuid;
-    // Attempt to login in through our User service
+
     this.Organizations.linkOrganization(this.AppUserModel).subscribe((resp) => {
       if (resp) {
-        // this.currentItems.splice(item);
-        // let toast = this.toastCtrl.create({
-        //   message: "Add successfully",
-        //   duration: 3000,
-        //   position: 'top'
-        // });
-        // toast.present();
-        //  this.currentItems.splice(item);
-        //   document.getElementById("#click" + item.id).hide()
-        //      $("#click1").html('')
+        setTimeout(() => {
+          loadingPopup.dismiss();
+        }, 500);
+        this.currentItems.splice(this.currentItems.indexOf(item), 1);
+
       }
     }, (err) => {
 
@@ -95,7 +107,7 @@ public user :User,
   deleteItem(item) {
     this.currentItems.delete(item);
   }
- viewCompany(item) {
+  viewCompany(item) {
     this.navCtrl.push("OrganizationDetailPage", { 'record': item })
   }
   /**

@@ -5,7 +5,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import { Connections, User } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { EventsPage, SchedulePage } from '../pages';
-import { MenuController } from 'ionic-angular';
+import { MenuController, LoadingController } from 'ionic-angular';
 
 /**
 /**
@@ -33,15 +33,22 @@ export class ConnectionsPage {
     public translateService: TranslateService,
     public user: User,
     private device: Device,
-      public menu: MenuController,) {
-        this.menu.enable(true, 'menu1');
-      this.menu.enable(false, 'menu2');
+    public menu: MenuController, private loadingCtrl: LoadingController) {
+    let loadingPopup = this.loadingCtrl.create({
+      content: 'Processing...'
+    });
+    loadingPopup.present();//Loader
+    this.menu.enable(true, 'menu1');
+    this.menu.enable(false, 'menu2');
     this.Connections.GetConnections().subscribe((resp: any) => {
+      setTimeout(() => {
+        loadingPopup.dismiss();
+      }, 500);
       if (!user.authenticated) {
         this.navCtrl.push("LoginPage");
       }
       else {
-       // alert("hnji")
+        // alert("hnji")
         //$("#settingsTable").append();
         this.currentItems = resp.data;
       }
@@ -70,8 +77,15 @@ export class ConnectionsPage {
     //alert(this.device.uuid);
     // this.account.UUID = this.device.uuid;
     // Attempt to login in through our User service
+    let loadingPopup = this.loadingCtrl.create({
+      content: 'Processing...'
+    });
+    loadingPopup.present();//Loader
     this.Connections.unlinkOrganization(this.AppUserModel).subscribe((resp) => {
       if (resp) {
+        setTimeout(() => {
+          loadingPopup.dismiss();
+        }, 500);
         this.currentItems.splice(item);
         let toast = this.toastCtrl.create({
           message: "Remove successfully",

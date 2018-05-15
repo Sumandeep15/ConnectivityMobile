@@ -13,6 +13,11 @@ export class Organizations {
   //  alert(params.id)
     return this.api.get('api/gurudwaraservices/getAllOrganizationsByCId').share();
   }
+  Organizationdetail(id)
+  {
+
+    return this.api.get('api/gurudwaraservices/Organizationdetail?id='+id).share();
+  }
   linkOrganization(AppUserModel:any) {
  //alert(AppUserModel)
     return this.api.post('api/gurudwaraservices/linkOrganization',AppUserModel).share();

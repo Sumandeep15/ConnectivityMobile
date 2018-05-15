@@ -2,32 +2,39 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
 import { Items } from '../../providers/providers';
-
+import { MenuController } from 'ionic-angular';
+import { Organizations, StorageService, User } from '../../providers/providers';
 @IonicPage()
 @Component({
   selector: 'page-organization-detail',
   templateUrl: 'organization-detail.html'
 })
 export class OrganizationDetailPage {
- // item: any;
+  // item: any;
   currentItem: any;
-  AppUserModel: { OrganizationId: any } = {
 
-    OrganizationId: 0
+   AppUserModel: {aboutUs:any,
+  contactUs:any } = {
+
+    aboutUs: "-",
+    contactUs:"-"
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.AppUserModel = this.navParams.get('record');
-   // alert(JSON.stringify(this.AppUserModel))
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public Organizations: Organizations) {
+    this.currentItem = this.navParams.get('record');
+    // alert(JSON.stringify(this.AppUserModel))
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
-    this.currentItem = this.AppUserModel;
-    console.log(this.currentItem);
-    //  }, (err) => {
 
-    // });
+    this.menu.enable(true, 'menu1');
+    this.menu.enable(false, 'menu2');
+    this.Organizations.Organizationdetail(this.currentItem.id).subscribe((resp: any) => {
+      this.AppUserModel = resp.data;
+
+    }, (err) => {
+
+    });
   }
- ionViewDidLoad() {
-    $(".menu2hide").show();
-     $(".menu1hide").hide();
+  ionViewDidLoad() {
+
     // console.log('ionViewDidLoad ConnectionsPage');
   }
 }

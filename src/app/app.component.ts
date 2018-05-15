@@ -9,11 +9,15 @@ import { Settings } from '../providers';
 
 @Component({
   template: `<ion-menu [content]="content" id="menu1">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Connectivity</ion-title>
+  </ion-navbar>
+</ion-header>
+
 
     <ion-content>
       <ion-list>
@@ -26,11 +30,14 @@ import { Settings } from '../providers';
   </ion-menu>
 
   <ion-menu [content]="content" id="menu2">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
+     <ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Connectivity</ion-title>
+  </ion-navbar>
+</ion-header>
 
     <ion-content>
       <ion-list>
