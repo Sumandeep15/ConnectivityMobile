@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import * as $ from 'jquery';
 import { Organizations, StorageService,User } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
+import { MenuController } from 'ionic-angular';
 /**
  * Generated class for the OrganizationsPage page.
  *
@@ -31,7 +32,10 @@ export class OrganizationsPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
 public user :User,
-    private device: Device) {
+    private device: Device,
+      public menu: MenuController,) {
+          this.menu.enable(true, 'menu1');
+      this.menu.enable(false, 'menu2');
     this.Organizations.list().subscribe((resp: any) => {
       if (!user.authenticated) {
         this.navCtrl.push("LoginPage");

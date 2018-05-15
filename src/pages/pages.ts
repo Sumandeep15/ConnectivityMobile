@@ -19,3 +19,5 @@ export const SchedulePage='SchedulePage'
 export const NewsPage='NewsPage'
 export const ServicesPage='ServicesPage'
 export const OrganizationDetailPage='OrganizationDetailPage'
+export const MenuPage='MenuPage'
+

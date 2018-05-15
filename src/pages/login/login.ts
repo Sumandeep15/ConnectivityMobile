@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
-import { MainPage ,LandingPage,HomePage} from '../pages';
+import { MainPage, LandingPage, HomePage, MenuPage } from '../pages';
 import { Device } from '@ionic-native/device';
 
 @IonicPage()
@@ -12,8 +13,8 @@ import { Device } from '@ionic-native/device';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  menu1hide:true;
-menu2hide:false;
+  menu1hide: true;
+  menu2hide: false;
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
@@ -30,18 +31,19 @@ menu2hide:false;
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-
+    public menu: MenuController,
     private device: Device) {
-//alert("ssss")
-
-   // alert("ssss")
+    //alert("ssss")
+    this.menu.enable(false, 'menu1');
+      this.menu.enable(false, 'menu2');
+    // alert("ssss")
   }
 
   // Attempt to login in through our User service
   doLogin() {
-  //  alert(this.device.uuid);
+    //  alert(this.device.uuid);
     this.account.uuid = this.device.uuid;
-    this.user.login(this.account).subscribe((resp:any) => {
+    this.user.login(this.account).subscribe((resp: any) => {
 
       if (resp.status == 1) {
         this.navCtrl.setRoot(HomePage);

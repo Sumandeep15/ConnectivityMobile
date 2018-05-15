@@ -5,7 +5,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import { Connections, User } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { EventsPage, SchedulePage } from '../pages';
-import * as $ from 'jquery'
+import { MenuController } from 'ionic-angular';
 
 /**
 /**
@@ -32,7 +32,10 @@ export class ConnectionsPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
-    private device: Device) {
+    private device: Device,
+      public menu: MenuController,) {
+        this.menu.enable(true, 'menu1');
+      this.menu.enable(false, 'menu2');
     this.Connections.GetConnections().subscribe((resp: any) => {
       if (!user.authenticated) {
         this.navCtrl.push("LoginPage");
@@ -49,8 +52,7 @@ export class ConnectionsPage {
   }
 
   ionViewDidLoad() {
-    $(".menu1hide").show();
-     $(".menu2hide").hide();
+
     // console.log('ionViewDidLoad ConnectionsPage');
   }
 
