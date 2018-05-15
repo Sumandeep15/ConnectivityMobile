@@ -1,62 +1,23 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ currentItem.name }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+aboutUs
 <ion-content>
 
-    <section class="listing-wrapper mg-top-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card z-depth-1-half mg-top-18 mg-bottom-30">
-                        <div class="card-body">
-                            <div class="block">
-                                <ul class="widget-list">
-                                    <li class="row">
-                                        <div class="col-md-8">
-                                            <div class="event-img-wrapper">
-                                                <figure>
-                                                    <img srcset="{{currentItem.imagePath}}" title="" alt="event" class="img-fluid z-depth-1-half">
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="inner-content event-name">
-                                                <h5><a href="#">{{currentItem.name}}</a></h5>
-                                                <!--<p><i class="fa fa-location-arrow events-icons"></i> Surrey ( Canada )</p>-->
-                                                <p><i class="events-icons"></i>( {{currentItem.state}})</p>
-                                                <!--<p><i class="fa fa-user events-icons"></i> Balwant Singh</p>-->
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="col-md-2">
-                                                <b>  About Us</b>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="event-content">
-                                                    <div [innerHTML]="AppUserModel.aboutUs"></div>
+    <img srcset="{{currentItem.imagePath}}" title="" alt="event" class="img-fluid z-depth-1-half">
+    <div class="item-detail" padding>
+        <h2>About Us</h2>
+        <div [innerHTML]="AppUserModel.aboutUs"></div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="col-md-2">
-                                                <b>  Contact Us</b>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="event-content">
+    </div>
+    <div class="item-detail" padding>
+        <h2>Contact Us</h2>
+        <div [innerHTML]="AppUserModel.contactUs"></div>
 
-                                                    <div [innerHTML]="AppUserModel.contactUs"></div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
+    </div>
 </ion-content>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 
-import { Connections, User } from '../../providers/providers';
+import { Connections, User ,GlobalVars} from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { EventsPage, SchedulePage } from '../pages';
 import { MenuController, LoadingController } from 'ionic-angular';
@@ -33,7 +33,8 @@ export class ConnectionsPage {
     public translateService: TranslateService,
     public user: User,
     private device: Device,
-    public menu: MenuController, private loadingCtrl: LoadingController) {
+    public menu: MenuController, private loadingCtrl: LoadingController,
+    public GlobalVars:GlobalVars) {
     let loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'
     });
@@ -107,5 +108,8 @@ export class ConnectionsPage {
       toast.present();
     });
   }
-
+ viewCompany(item) {
+  this.GlobalVars.setMyGlobalVar(item);
+    this.navCtrl.push("TabsPage", { 'record': item })
+  }
 }
