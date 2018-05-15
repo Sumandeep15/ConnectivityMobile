@@ -3,7 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
-
+import { StorageService } from '../storage/storageservice';
 /**
  * Most apps have the concept of a User. This is a simple provider
  * with stubs for login/signup/etc.
@@ -26,19 +26,27 @@ import { Api } from '../api/api';
 @Injectable()
 export class User {
   _user: any;
+  private isLoggedIn = false;
+  public menu1: false;
+  public menu2: false;
 
-  constructor(public api: Api) { }
+  constructor(public api: Api, private cacheService: StorageService) { }
 
   /**
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
+  authenticated(): boolean {
+    return this.isLoggedIn;
+  }
   login(accountInfo: any) {
-    let seq = this.api.post('login', accountInfo).share();
+    let seq = this.api.postsignup('api/gurudwaraservices/login', accountInfo).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
+      if (res.status == 1) {
+        this.isLoggedIn = true;
+        this.cacheService.add("guser", res.data);
         this._loggedIn(res);
       } else {
       }
@@ -54,11 +62,12 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('signup', accountInfo).share();
+
+    let seq = this.api.postsignup('api/gurudwaraservices/signup', accountInfo).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
+      if (res.status == 1) {
         this._loggedIn(res);
       }
     }, err => {
@@ -68,11 +77,30 @@ export class User {
     return seq;
   }
 
+
+  OTPsignup(accountInfo: any) {
+
+    let seq = this.api.postsignup('api/gurudwaraservices/CheckOTP', accountInfo).share();
+
+    seq.subscribe((res: any) => {
+      // If the API returned a successful response, mark the user as logged in
+      if (res.status == 1) {
+        //  this._loggedIn(res);
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+
+    return seq;
+  }
   /**
    * Log the user out, which forgets the session
    */
   logout() {
+    this.isLoggedIn = false;
     this._user = null;
+    let seq = this.api.post('api/gurudwaraservices/Logout', null).share();
+
   }
 
   /**
@@ -80,5 +108,12 @@ export class User {
    */
   _loggedIn(resp) {
     this._user = resp.user;
+  }
+
+  isloggedIn() {
+    if (this._user)
+      return true;
+    else
+      return false;
   }
 }

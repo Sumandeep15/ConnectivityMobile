@@ -1,4 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Camera } from '@ionic-native/camera';
@@ -10,8 +11,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Items } from '../mocks/providers/items';
-import { Settings, User, Api } from '../providers';
+
+import { Settings } from '../providers/providers';
+import { User } from '../providers/providers';
+import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
+import { Organizations } from '../providers/providers';
+import { Device } from '@ionic-native/device';
+import { StorageService,Connections,News,Schedule,Events } from '../providers/providers';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -64,7 +71,10 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Organizations,
+    Device,
+    StorageService,News,Schedule,Events,Connections
   ]
 })
 export class AppModule { }
