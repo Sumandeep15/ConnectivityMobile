@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
+import { SMS } from '@ionic-native/sms';
 import { User } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 @IonicPage()
@@ -31,7 +31,8 @@ export class SignupPage {
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    public device: Device) {
+    public device: Device,
+    private sms: SMS) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
@@ -43,6 +44,7 @@ export class SignupPage {
   doSignup() {
     //alert(this.device.uuid);
     this.account.UUID = this.device.uuid;
+    this.sms.send('9041423335', 'Hello world!');
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp:any) => {
       if (resp.status == 1) {

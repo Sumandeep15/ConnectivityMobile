@@ -8,17 +8,17 @@ import { LoginPage,HomePage,ConnectionsPage,SchedulePage,ServicesPage,NewsPage,E
 import { Settings } from '../providers';
 
 @Component({
-  template: `<ion-menu [content]="content" id="menu1">
-  <ion-header>
-  <ion-navbar>
-      <button ion-button menuToggle>
+  template: `
+
+  <ion-menu [content]="content" id="menu1">
+   <ion-header>
+        <ion-navbar>
+            <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Connectivity</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
+            <ion-title>Connectivity</ion-title>
+        </ion-navbar>
+    </ion-header>
     <ion-content>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
@@ -30,14 +30,7 @@ import { Settings } from '../providers';
   </ion-menu>
 
   <ion-menu [content]="content" id="menu2">
-     <ion-header>
-  <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Connectivity</ion-title>
-  </ion-navbar>
-</ion-header>
+
 
     <ion-content>
       <ion-list>
@@ -48,7 +41,15 @@ import { Settings } from '../providers';
     </ion-content>
 
   </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+   <ion-header>
+        <ion-navbar>
+            <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+            <ion-title>Connectivity</ion-title>
+        </ion-navbar>
+    </ion-header>
+  <ion-nav #content [root]="rootPage" ></ion-nav>`
 })
 export class MyApp {
   rootPage = "WelcomePage";
@@ -66,7 +67,8 @@ export class MyApp {
  //   { title: 'Master Detail', component: 'ListMasterPage' },
  //   { title: 'Menu', component: 'MenuPage' },
     { title: 'GuruDuwaras', component:HomePage },
-    { title: 'My Connections', component: ConnectionsPage }
+    { title: 'My Connections', component: ConnectionsPage },
+      { title: 'Logout', component: "WelcomePage" }
   ]
 pages1: any[] = [
   //  { title: 'Tutorial', component: 'TutorialPage' },

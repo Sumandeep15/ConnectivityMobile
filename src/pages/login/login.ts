@@ -15,6 +15,7 @@ import { Device } from '@ionic-native/device';
 export class LoginPage {
   menu1hide: true;
   menu2hide: false;
+  modulename:"Login"
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
