@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
-import * as $ from 'jquery';
-import { Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
+import { Api, Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
 /**
@@ -21,6 +20,8 @@ import { MenuController, LoadingController, AlertController } from 'ionic-angula
 export class OrganizationsPage {
 
   currentItems: any;
+  fullItems: any;
+  apiURL: any;
   AppUserModel: { OrganizationId: any } = {
 
     OrganizationId: 0
@@ -30,6 +31,7 @@ export class OrganizationsPage {
     public StorageService: StorageService,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
+    public api: Api,
     public translateService: TranslateService,
     public user: User,
     public GlobalVars: GlobalVars,
@@ -37,6 +39,7 @@ export class OrganizationsPage {
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
 
+    this.apiURL = api.url;
     let loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'
     });
@@ -56,18 +59,36 @@ export class OrganizationsPage {
         this.navCtrl.push("LoginPage");
       }
       else {
-        this.currentItems = resp.data;
+        this.fullItems = this.currentItems = resp.data;
       }
       // alert(  JSON.stringify( this.currentItems));
     }, (err) => {
 
     });
   }
+  initializeItems(ev: any) {
+    this.currentItems = this.fullItems;
+  }
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems(ev);
 
+    // set val to the value of the searchbar
+    let val = ev.target.value;
 
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '' && this.currentItems != null) {
+      this.currentItems = this.currentItems.filter((item) => {
+
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1
+          || item.strCity.toLowerCase().indexOf(val.toLowerCase()) > -1
+          || item.strState.toLowerCase().indexOf(val.toLowerCase()) > -1
+          || item.strCountry.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
   ionViewDidLoad() {
-    $(".menu1hide").show();
-    $(".menu2hide").hide();
+
     // console.log('ionViewDidLoad ConnectionsPage');
   }
   delete(item: any) {

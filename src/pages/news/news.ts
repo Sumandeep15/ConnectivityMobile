@@ -4,7 +4,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import { News, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController ,AlertController} from 'ionic-angular';
-import * as $ from 'jquery';
+
 /**
  * Generated class for the OrganizationsPage page.
  *

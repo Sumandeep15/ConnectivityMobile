@@ -40,9 +40,11 @@ export class User {
     return this.isLoggedIn;
   }
   login(accountInfo: any) {
+
     let seq = this.api.postsignup('api/gurudwaraservices/login', accountInfo).share();
 
     seq.subscribe((res: any) => {
+
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 1) {
         this.isLoggedIn = true;

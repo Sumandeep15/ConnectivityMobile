@@ -9,6 +9,8 @@
 <ion-content>
     <!--=============  Listing  ==============-->
 
+    <ion-searchbar [showCancelButton]="shouldShowCancel" (ionInput)="getItems($event)" (ionCancel)="initializeItems($event)">
+    </ion-searchbar>
     <section class="listing-wrapper mg-top-30">
         <div class="container">
             <div class="row">
@@ -20,7 +22,7 @@
                                     <li>
                                         <figure>
                                             <a href="#">
-                                                <img alt="8th-post-featured" class="tabs-thumb wp-post-image group-t-img" src="{{item.imagePath}}">
+                                                <img alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{item.imagePath}}">
                                             </a>
                                         </figure>
                                         <div class="inner-content">
