@@ -26,7 +26,7 @@ import { StorageService } from '../storage/storageservice';
 @Injectable()
 export class User {
   _user: any;
-  private isLoggedIn = false;
+  public isLoggedIn = false;
   public menu1: false;
   public menu2: false;
 
@@ -99,9 +99,12 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
+   
     this.isLoggedIn = false;
-    this._user = null;
-    let seq = this.api.post('api/gurudwaraservices/Logout', null).share();
+   this._user = null;
+    this.cacheService.remove("guser");
+   // alert("cool")
+    //let seq = this.api.post('api/gurudwaraservices/Logout', null).share();
 
   }
 

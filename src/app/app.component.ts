@@ -2,51 +2,36 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Config, Nav, Platform, Toast } from 'ionic-angular';
 
 import { LoginPage, HomePage, ConnectionsPage, SchedulePage, ServicesPage, NewsPage, EventsPage, GalleryPage, NotificationsPage, VideogalleryPage } from '../pages/pages';
 import { Settings } from '../providers';
 import { AlertController } from 'ionic-angular';
+import { StorageService } from '../providers/storage/storageservice';
 
 import { ToastController } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 import { Network } from '@ionic-native/network';
 import { SMS } from '@ionic-native/sms';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 @Component({
   templateUrl: 'app.html',
 
 })
 export class MyApp {
-  rootPage = "WelcomePage";
+  rootPage = null;
 
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    //  { title: 'Tutorial', component: 'TutorialPage' },
-    //  { title: 'Welcome', component: 'WelcomePage' },
-    //   { title: 'Tabs', component: 'TabsPage' },
-    //   { title: 'Cards', component: 'CardsPage' },
-    //  { title: 'Content', component: 'ContentPage' },
-    //   { title: 'Login', component: 'LoginPage' },
-    //   { title: 'Signup', component: 'SignupPage' },
-    //   { title: 'Master Detail', component: 'ListMasterPage' },
-    //   { title: 'Menu', component: 'MenuPage' },
+
     { title: 'Home', component: HomePage },
     { title: 'My Connections', component: ConnectionsPage },
     { title: 'Notifications', component: NotificationsPage },
-    { title: 'Logout', component: "WelcomePage" }
+    { title: 'Logout', component: "LogoutPage" }
   ]
   pages1: any[] = [
-    //  { title: 'Tutorial', component: 'TutorialPage' },
-    //  { title: 'Welcome', component: 'WelcomePage' },
-    //   { title: 'Tabs', component: 'TabsPage' },
-    //   { title: 'Cards', component: 'CardsPage' },
-    //  { title: 'Content', component: 'ContentPage' },
-    //   { title: 'Login', component: 'LoginPage' },
-    //   { title: 'Signup', component: 'SignupPage' },
-    //   { title: 'Master Detail', component: 'ListMasterPage' },
-    //   { title: 'Menu', component: 'MenuPage' },
 
     { title: 'Home', component: HomePage },
     { title: 'Notifications', component: NotificationsPage },
@@ -58,14 +43,36 @@ export class MyApp {
     { title: 'Video Gallery', component: VideogalleryPage },
 
   ]
-  constructor(private sms: SMS, private network: Network, toastCtrl: ToastController, private alertCtrl: AlertController, private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private sms: SMS,
+    private androidPermissions: AndroidPermissions,
+    private network: Network,
+    toastCtrl: ToastController,
+    private alertCtrl: AlertController,
+    private translate: TranslateService,
+    platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private storage: StorageService) {
+
+
     platform.ready().then(() => {
+      if(this.storage.get("guser")!= null)
+      {
+        this.rootPage= HomePage;
+      }
+      else
+      {
+        this.rootPage =  "WelcomePage"
+      }
       // Schedule multiple notifications
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.androidPermissions.requestPermissions(
+        [this.androidPermissions.PERMISSION.SEND_SMS,
+        this.androidPermissions.PERMISSION.READ_PHONE_STATE]);
 
     });
 

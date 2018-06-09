@@ -27,6 +27,7 @@ export class GalleryPage {
     OrganizationId: 0
   };
   id: any;
+  loadingPopup: any;
   constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
     public Gallery: Gallery,
     public navCtrl: NavController,
@@ -44,13 +45,13 @@ export class GalleryPage {
       this.navCtrl.push("LoginPage");
     }
     else {
-      let loadingPopup = this.loadingCtrl.create({
+      this.loadingPopup = this.loadingCtrl.create({
         content: 'Processing...'
       });
-      loadingPopup.present();//Loader
+      this.loadingPopup.present();//Loader
       this.Gallery.GetCompanyGallery(this.AppUserModel).subscribe((resp: any) => {
         setTimeout(() => {
-          loadingPopup.dismiss();
+          this.loadingPopup.dismiss();
         }, 500);
 
         this.currentItems = resp.data;
@@ -79,7 +80,9 @@ export class GalleryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');
   }
-
+  ionViewWillLeave() {
+    this.loadingPopup.dismiss();
+  }
   viewDetail(item) {
     this.navCtrl.push("EventsDetailPage", { 'record': item })
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, Toast } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
@@ -43,21 +43,37 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
 
-    this.account.uuid = this.device.uuid;
-    this.user.login(this.account).subscribe((resp: any) => {
-     // alert(JSON.stringify(resp))
-      if (resp.status == 1) {
-       // alert("here")
-        this.navCtrl.setRoot(HomePage);
-      }
-      else {
-     //   alert("Wrong credentials");
-      }
-    }, (err) => {
-     // alert(JSON.stringify(err))
-      // this.navCtrl.push(HomePage);
-      // Unable to log in
+    if (this.account.userName == "" || this.account.password == "") {
+      this.toastCtrl.create({
+        message: "Please enter all details",
+        duration: 3000,
+        position: 'center'
+      }).present();
+    }
+    else {
+      this.account.uuid = this.device.uuid;
+      this.user.login(this.account).subscribe((resp: any) => {
+        // alert(JSON.stringify(resp))
+        if (resp.status == 1) {
+          // alert("here")
+          this.navCtrl.setRoot(HomePage);
+        }
+        else if (resp.status == -1) {
+          this.toastCtrl.create({
+            message: "Invalid email/password",
+            duration: 3000,
+            position: 'center'
+          }).present();
 
-    });
+        }
+        else { }
+      }, (err) => {
+        // alert(JSON.stringify(err))
+        // this.navCtrl.push(HomePage);
+        // Unable to log in
+
+      });
+    }
+
   }
 }

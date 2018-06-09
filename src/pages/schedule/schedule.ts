@@ -22,6 +22,7 @@ export class SchedulePage {
   AppUserModel: { OrganizationId: any } = {
     OrganizationId: 0
   };
+  loadingPopup: any;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Schedule: Schedule,
     public navCtrl: NavController,
@@ -36,15 +37,15 @@ export class SchedulePage {
     }
     else {
       this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
-      let loadingPopup = this.loadingCtrl.create({
+      this.loadingPopup = this.loadingCtrl.create({
         content: 'Processing...'
       });
-      loadingPopup.present();//Loader
+      this.loadingPopup.present();//Loader
       this.Schedule.GetCompanySchedule(this.AppUserModel).subscribe((resp: any) => {
 
         this.currentItems = resp.data;
         setTimeout(() => {
-          loadingPopup.dismiss();
+          this.loadingPopup.dismiss();
         }, 500);
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
@@ -62,6 +63,9 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
+  }
+  ionViewWillLeave() {
+    this.loadingPopup.dismiss();
   }
   viewDetail(item) {
     this.navCtrl.push("ScheduleDetailPage", { 'record': item })

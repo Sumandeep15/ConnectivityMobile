@@ -24,6 +24,7 @@ export class EventsPage {
     OrganizationId: 0
   };
   id: any;
+  loadingPopup: any;
   constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
     public Events: Events,
     public navCtrl: NavController,
@@ -41,13 +42,13 @@ export class EventsPage {
       this.navCtrl.push("LoginPage");
     }
     else {
-      let loadingPopup = this.loadingCtrl.create({
+      this.loadingPopup = this.loadingCtrl.create({
         content: 'Processing...'
       });
-      loadingPopup.present();//Loader
+      this.loadingPopup.present();//Loader
       this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
         setTimeout(() => {
-          loadingPopup.dismiss();
+          this.loadingPopup.dismiss();
         }, 500);
 
         this.currentItems = resp.data;
@@ -70,7 +71,9 @@ export class EventsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');
   }
-
+  ionViewWillLeave() {
+    this.loadingPopup.dismiss();
+  }
   viewDetail(item) {
     this.navCtrl.push("EventsDetailPage", { 'record': item })
   }

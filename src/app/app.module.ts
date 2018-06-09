@@ -21,8 +21,10 @@ import { StorageService, Connections, News, Schedule, Events, GlobalVars, Servic
 import { SMS } from '@ionic-native/sms';
 import { AlertController, Platform } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { VideoPipe } from "../pipes/video-link/video-link";
+
 
 const firebase = {
   // your firebase web config
@@ -82,6 +84,7 @@ Network,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Organizations,
     Device,
+    AndroidPermissions,
     StorageService, News, Schedule, Events, Connections, GlobalVars,
     SMS, Services, AlertController,
     Gallery, Notifications

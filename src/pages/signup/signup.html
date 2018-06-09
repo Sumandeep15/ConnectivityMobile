@@ -20,32 +20,31 @@
             <div class="row pd-top-20">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <!-- Material form register -->
-                    <form (submit)="doSignup()" *ngIf="SignUp">
-                        <!-- Material input text -->
+                    <form (submit)="CheckPermissions()" *ngIf="SignUp">
+                        <!-- Material input Name -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.Name" name="Name" class="form-control custom-text">
+                            <input type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control custom-text">
                             <label for="materialFormRegisterNameEx" class="text-white">Full Name</label>
                         </div>
 
-                        <!-- Material input text -->
+                        <!-- Material input Email -->
                         <div class="md-form">
                             <i class="fa fa-building prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegistercodeEx" [(ngModel)]="account.Email" name="Email" class="form-control custom-text">
+                            <input type="email" id="materialFormRegistercodeEx" type="email" [(ngModel)]="account.Email" required name="Email" class="form-control custom-text">
                             <label for="materialFormRegistercodeEx" class="text-white">Email</label>
                         </div>
 
-                        <!-- Material input email -->
+                        <!-- Material input Mobile -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text text-white"></i>
-                            <input type="email" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" class="form-control custom-text">
+                            <input type="number" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10"
+                                class="form-control custom-text">
                             <label for="materialFormRegisterEmailEx" class="text-white">Mobile</label>
                         </div>
 
                         <div class="text-center mt-4">
                             <button ion-button color="primary" class="btn btn-primary custom-btn z-depth-2" block>Register</button>
-
-
                         </div>
                     </form>
                     <!-- Material form register -->
@@ -53,7 +52,7 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.OTP" name="OTP" class="form-control custom-text">
+                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.OTP" name="OTP" required type="number" class="form-control custom-text">
                             <label for="materialFormRegisterNameEx" class="text-white">OTP</label>
                         </div>
 
