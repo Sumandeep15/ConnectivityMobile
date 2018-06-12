@@ -24,27 +24,31 @@
                         <!-- Material input Name -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control custom-text">
-                            <label for="materialFormRegisterNameEx" class="text-white">Full Name</label>
+                            <input type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
+                            <label for="materialFormRegisterNameEx" class="label text-white">Full Name</label>
                         </div>
 
                         <!-- Material input Email -->
                         <div class="md-form">
                             <i class="fa fa-building prefix grey-text text-white"></i>
-                            <input type="email" id="materialFormRegistercodeEx" type="email" [(ngModel)]="account.Email" required name="Email" class="form-control custom-text">
-                            <label for="materialFormRegistercodeEx" class="text-white">Email</label>
+                            <input type="email" id="materialFormRegistercodeEx" type="email" [(ngModel)]="account.Email" required name="Email" class="form-control input input custom-text">
+                            <label for="materialFormRegistercodeEx" class="text-white label">Email</label>
                         </div>
 
                         <!-- Material input Mobile -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text text-white"></i>
-                            <input type="number" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10"
-                                class="form-control custom-text">
-                            <label for="materialFormRegisterEmailEx" class="text-white">Mobile</label>
+                            <input type="number" [pattern]="userpattern" #usernum="ngModel" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile"
+                                name="Mobile" required minlength="10" maxlength="10" class="form-control input input custom-text">
+                            <label for="materialFormRegisterEmailEx" class="text-white label">Mobile</label>
+                            <div class="alert  alertnumber" *ngIf="usernum.errors?.pattern">
+                                Invalid Phone Number
+                            </div>
                         </div>
 
+
                         <div class="text-center mt-4">
-                            <button ion-button color="primary" class="btn btn-primary custom-btn z-depth-2" block>Register</button>
+                            <button  color="primary" class="btn btn-primary custom-btn z-depth-2" block>Register</button>
                         </div>
                     </form>
                     <!-- Material form register -->
@@ -52,16 +56,14 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.OTP" name="OTP" required type="number" class="form-control custom-text">
-                            <label for="materialFormRegisterNameEx" class="text-white">OTP</label>
+                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.OTP" name="OTP" required type="number" class="input form-control custom-text">
+                            <label for="materialFormRegisterNameEx" class="text-white label">OTP</label>
                         </div>
 
 
 
                         <div class="text-center mt-4">
-                            <button ion-button color="primary" class="btn btn-primary custom-btn z-depth-2" block>Register</button>
-
-
+                            <button ion-button color="primary" class="btn btn-primary custom-btn z-depth-2" block>Register</button>\
                         </div>
                     </form>
                 </div>

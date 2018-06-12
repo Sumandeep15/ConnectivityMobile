@@ -24,7 +24,7 @@ export class LoginPage {
     password: '',
     uuid: ''
   };
-
+  userpattern = /^\d{8,13}$/;
   // Our translated text strings
   private loginErrorString: string;
 
