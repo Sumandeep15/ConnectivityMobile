@@ -25,7 +25,7 @@ export class SignupPage {
     UUID: '',
     OTP: ''
   };
-
+  userpattern = /^\d{8,13}$/;
   // Our translated text strings
   private signupErrorString: string;
 

@@ -24,14 +24,18 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" [(ngModel)]="account.userName" name="Name" class="form-control custom-text">
+                            <input type="number" [pattern]="userpattern" #usernum="ngModel" placeholder="Phone Number" id="materialFormRegisterNameEx" [(ngModel)]="account.userName" name="Name" class="form-control input custom-text">
                             <!--<label for="materialFormRegisterNameEx" class="text-white">Mobile/Email</label>-->
+                            <div class="alert  alertnumber" *ngIf="usernum.errors?.pattern">
+                                Invalid Phone Number
+                            </div>
                         </div>
+                        
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-building prefix grey-text text-white"></i>
-                            <input type="password" id="materialFormRegistercodeEx" [(ngModel)]="account.password" name="Email" class="form-control custom-text">
+                            <input type="password" id="materialFormRegistercodeEx" [(ngModel)]="account.password" placeholder="Password" name="Email" class="form-control input custom-text">
                             <!--<label for="materialFormRegistercodeEx" class="text-white">Password</label>-->
                         </div>
 
