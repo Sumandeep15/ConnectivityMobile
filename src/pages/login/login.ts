@@ -60,7 +60,7 @@ export class LoginPage {
         }
         else if (resp.status == -1) {
           this.toastCtrl.create({
-            message: "Invalid email/password",
+            message: "Invalid PhoneNumber/Password",
             duration: 3000,
             position: 'center'
           }).present();
