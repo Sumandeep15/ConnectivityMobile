@@ -15,6 +15,7 @@ import { tap } from 'rxjs/operators';
 import { Network } from '@ionic-native/network';
 import { SMS } from '@ionic-native/sms';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { GalleryListPage, VideogalleryListPage } from '../pages/pages';
 @Component({
   templateUrl: 'app.html',
 
@@ -35,13 +36,13 @@ export class MyApp {
 
     { title: 'Home', component: HomePage },
     { title: 'Notifications', component: NotificationsPage },
-    { title: 'News', component: NewsPage },
-    { title: 'Events', component: EventsPage },
     { title: 'Schedule', component: SchedulePage },
     { title: 'Services', component: ServicesPage },
-    { title: 'Gallery', component: GalleryPage },
-    { title: 'Video Gallery', component: VideogalleryPage },
-
+    { title: 'Events', component: EventsPage },
+    { title: 'News', component: NewsPage },
+    { title: 'Photo Gallery', component: GalleryListPage }, 
+    { title: 'Video Gallery', component: VideogalleryPage }
+// VideogalleryListPage
   ]
   constructor(private sms: SMS,
     private androidPermissions: AndroidPermissions,

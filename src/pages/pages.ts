@@ -20,10 +20,11 @@ export const NewsPage='NewsPage'
 export const ServicesPage='ServicesPage'
 export const OrganizationDetailPage='OrganizationDetailPage'
 export const MenuPage='MenuPage'
-export const GalleryPage='GalleryPage'
+export const GalleryPage = 'GalleryPage'
+export const GalleryListPage = 'GalleryListPage'
 export const NotificationsPage='NotificationsPage'
 export const VideogalleryPage='VideogalleryPage'
-
+export const VideogalleryListPage = 'VideogalleryListPage';
 
 
 

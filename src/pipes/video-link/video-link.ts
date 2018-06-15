@@ -16,7 +16,7 @@ export class VideoPipe implements PipeTransform {
   }
 
   transform(value: string, ...args) {
-    console.log(value);
+    //console.log(value);
     return this.dom.bypassSecurityTrustResourceUrl(value);
   }
 }

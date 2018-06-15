@@ -1,9 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Gallery</ion-title>
+        <ion-title>{{currentItems.galleryName}}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -14,15 +11,13 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <div *ngFor="let gal of currentItems">
-                        <div *ngFor="let img of gal.lst">
-                            <div class="gallery-pic">
-                                <figure align="center">
+                    <div *ngFor="let img of currentItems.lst">
+                        <div class="gallery-pic">
+                            <figure align="center">
 
-                                    <img src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
+                                <img src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
 
-                                </figure>
-                            </div>
+                            </figure>
                         </div>
                     </div>
                 </div>

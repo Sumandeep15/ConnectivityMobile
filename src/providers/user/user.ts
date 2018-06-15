@@ -90,7 +90,8 @@ export class User {
         //  this._loggedIn(res);
       }
     }, err => {
-      console.error('ERROR', err);
+      // console.error('ERROR', err);
+      alert('ERROR: '+ err);
     });
 
     return seq;
