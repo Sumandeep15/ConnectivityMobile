@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import { Api, Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the OrganizationsPage page.
  *
@@ -37,8 +38,9 @@ export class OrganizationsPage {
     public GlobalVars: GlobalVars,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
-
+    private alertCtrl: AlertController,
+     public events: Events) {
+ this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url;
     let loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'

@@ -6,6 +6,8 @@ import { Config, Nav, Platform, Toast } from 'ionic-angular';
 
 import { LoginPage, HomePage, ConnectionsPage, SchedulePage, ServicesPage, NewsPage, EventsPage, GalleryPage, NotificationsPage, VideogalleryPage } from '../pages/pages';
 import { Settings } from '../providers';
+
+import { GlobalVars } from '../providers/providers';
 import { AlertController } from 'ionic-angular';
 import { StorageService } from '../providers/storage/storageservice';
 
@@ -15,14 +17,14 @@ import { tap } from 'rxjs/operators';
 import { Network } from '@ionic-native/network';
 import { SMS } from '@ionic-native/sms';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
-import { GalleryListPage, VideogalleryListPage } from '../pages/pages';
+import { Events } from 'ionic-angular';
 @Component({
   templateUrl: 'app.html',
 
 })
 export class MyApp {
   rootPage = null;
-
+  appHeading = "Connectivity"
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
@@ -36,13 +38,13 @@ export class MyApp {
 
     { title: 'Home', component: HomePage },
     { title: 'Notifications', component: NotificationsPage },
+    { title: 'News', component: NewsPage },
+    { title: 'Events', component: EventsPage },
     { title: 'Schedule', component: SchedulePage },
     { title: 'Services', component: ServicesPage },
-    { title: 'Events', component: EventsPage },
-    { title: 'News', component: NewsPage },
-    { title: 'Photo Gallery', component: GalleryListPage }, 
-    { title: 'Video Gallery', component: VideogalleryListPage }
-// VideogalleryListPage
+    { title: 'Gallery', component: GalleryPage },
+    { title: 'Video Gallery', component: VideogalleryPage },
+
   ]
   constructor(private sms: SMS,
     private androidPermissions: AndroidPermissions,
@@ -51,14 +53,22 @@ export class MyApp {
     private alertCtrl: AlertController,
     private translate: TranslateService,
     platform: Platform,
+    public GlobalVars: GlobalVars,
     settings: Settings,
     private config: Config,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private storage: StorageService) {
-
+    private storage: StorageService,
+    public events: Events) {
+    // alert("ss")
+    events.subscribe('company:name', (variable) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.appHeading =variable
+    });
+   // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
+
       //  var myVar = setInterval(alertFunc, 6000);
 
       // platform.registerBackButtonAction(() => {
@@ -168,6 +178,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
   // homebtn() {
   //   this.navCtrl.setRoot(HomePage);
   //   console.log("homebtn");

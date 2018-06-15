@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Items } from '../../providers/providers';
 import { MenuController } from 'ionic-angular';
 import { Api, Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
+import { Events } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-organization-detail',
@@ -20,8 +21,9 @@ export class OrganizationDetailPage {
     aboutUs: "-",
     contactUs: "-"
   };
-  constructor(public navCtrl: NavController, public api: Api, public GlobalVars: GlobalVars, public navParams: NavParams, public menu: MenuController, public Organizations: Organizations) {
+  constructor(public events:Events,public navCtrl: NavController, public api: Api, public GlobalVars: GlobalVars, public navParams: NavParams, public menu: MenuController, public Organizations: Organizations) {
     this.currentItem = this.GlobalVars.getMyGlobalVar();
+    this.events.publish('company:name', this.currentItem.name);
     this.apiURL = api.url;
     // alert(JSON.stringify(this.AppUserModel))
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {

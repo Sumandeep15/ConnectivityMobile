@@ -6,7 +6,7 @@ import { Api, Connections, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { EventsPage, SchedulePage } from '../pages';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
-
+import { Events } from 'ionic-angular';
 /**
 /**
  * Generated class for the ConnectionsPage page.
@@ -21,6 +21,7 @@ import { MenuController, LoadingController, AlertController } from 'ionic-angula
   templateUrl: 'connections.html',
 })
 export class ConnectionsPage {
+
   currentItems: any;
   apiURL: any;
   AppUserModel: { OrganizationId: any } = {
@@ -37,7 +38,10 @@ export class ConnectionsPage {
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     public GlobalVars: GlobalVars,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public events: Events) {
+
+    this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url
     let loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'
