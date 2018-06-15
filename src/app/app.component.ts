@@ -59,13 +59,26 @@ export class MyApp {
 
 
     platform.ready().then(() => {
-      if(this.storage.get("guser")!= null)
-      {
-        this.rootPage= HomePage;
+      //  var myVar = setInterval(alertFunc, 6000);
+
+      // platform.registerBackButtonAction(() => {
+
+      //   if (this.storage.get("guser") != null) {
+      //     this.rootPage = HomePage;
+      //   }
+      //   else {
+      //     this.rootPage = "WelcomePage"
+      //   }
+      // });
+
+
+
+
+      if (this.storage.get("guser") != null) {
+        this.rootPage = HomePage;
       }
-      else
-      {
-        this.rootPage =  "WelcomePage"
+      else {
+        this.rootPage = "WelcomePage"
       }
       // Schedule multiple notifications
 
@@ -120,7 +133,10 @@ export class MyApp {
   }
 
 
-
+  myHandlerFunction() {
+    //  alert("ssss")
+    this.rootPage = HomePage;
+  }
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('en');

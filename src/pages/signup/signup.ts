@@ -18,12 +18,13 @@ export class SignupPage {
   // sure to add it to the type
   SignUp: any;
   OTPSignUp: any;
-  account: { Name: string, Email: string, Mobile: number, UUID: string, OTP: string } = {
+  account: { Name: string, Email: string, Mobile: number, UUID: string, OTP: string, Password: string } = {
     Name: '',
     Email: '',
     Mobile: null,
     UUID: '',
-    OTP: ''
+    OTP: '',
+    Password:''
   };
   userpattern = /^\d{8,13}$/;
   // Our translated text strings
@@ -50,6 +51,7 @@ export class SignupPage {
     })
   }
   CheckPermissions() {
+
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.SEND_SMS).then(success => {
       if (success.hasPermission) {
         console.log('Permission already granted');
