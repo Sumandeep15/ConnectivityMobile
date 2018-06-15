@@ -22,6 +22,10 @@
                 color: white !important;
             }
 
+            .customgradient {
+                background: linear-gradient(#ffc14d, white);
+            }
+
             .alertnumber {
                 color: #fff !important;
                 position: absolute;
