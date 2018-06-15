@@ -15,7 +15,7 @@
                         <div class="gallery-pic">
                             <figure align="center">
 
-                                <img src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
+                                <img src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" (click)="openImg(apiUrl,img.mediaPath,img.mediaName)" class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
 
                             </figure>
                         </div>

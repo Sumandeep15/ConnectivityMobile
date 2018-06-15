@@ -95,12 +95,12 @@ export class ConnectionsPage {
         }, 500);
         this.currentItems.splice(this.currentItems.indexOf(item), 1);
 
-        let alert1 = this.alertCtrl.create({
-          title: 'Message',
-          subTitle: 'Removed Successfully.',
-          buttons: ['OK']
+        let toast = this.toastCtrl.create({
+          message: 'Removed Successfully.',
+          duration: 3000,
+          position: 'top'
         });
-        alert1.present();
+        toast.present();
       }
     }, (err) => {
 

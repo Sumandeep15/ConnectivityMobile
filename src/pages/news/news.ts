@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 import { News, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
-import { MenuController, LoadingController ,AlertController} from 'ionic-angular';
+import { MenuController, LoadingController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the OrganizationsPage page.
@@ -52,14 +52,14 @@ export class NewsPage {
         }, 500);
 
         this.currentItems = resp.data;
-          if (this.currentItems == null || this.currentItems.length < 1) {
-        let alert1 = this.alertCtrl.create({
-          title: 'Message',
-          subTitle: 'Record not found.',
-          buttons: ['OK']
-        });
-        alert1.present();
-      }
+        if (this.currentItems == null || this.currentItems.length < 1) {
+          let alert1 = this.alertCtrl.create({
+            title: 'Message',
+            subTitle: 'Record not found.',
+            buttons: ['OK']
+          });
+          alert1.present();
+        }
       }, (err) => {
 
       });
@@ -67,6 +67,11 @@ export class NewsPage {
 
   }
 
+  onClick(item) {
+    // console.log("click news");
+    // console.log(JSON.stringify(item));
+    this.navCtrl.push("NewsDetailsPage", item);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');

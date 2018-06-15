@@ -1,3 +1,11 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{currentItem.activityName}}</ion-title>
+    </ion-navbar>
+</ion-header>
 <ion-content>
 
     <section class="listing-wrapper mg-top-30">
@@ -12,13 +20,13 @@
                                         <div class="col-md-8">
                                             <div class="event-img-wrapper">
                                                 <figure>
-                                                    <img srcset="{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
+                                                    <img src="{{apiUrl}}{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
                                                 </figure>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="inner-content event-name">
-                                                <h5><a href="">{{currentItem.activityName}}</a></h5>
+                                                <h5><a >{{currentItem.activityName}}</a></h5>
                                                 <!--<p><i class="fa fa-location-arrow events-icons"></i> Surrey ( Canada )</p>-->
                                                 <p><i class="fa fa-clock-o events-icons"></i> {{currentItem.strStartDate}}- {{currentItem.strEndDate}}</p>
                                                 <!--<p><i class="fa fa-user events-icons"></i> Balwant Singh</p>-->
@@ -26,9 +34,8 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="event-content">
-                                                <p>
-                                                    {{currentItem.activityDetail}}
-
+                                                <p [innerHTML]="currentItem.activityDetail">
+                                                    
                                                 </p>
                                             </div>
 

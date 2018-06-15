@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 import { Gallery, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
-import { MenuController, LoadingController ,AlertController} from 'ionic-angular';
+import { MenuController, LoadingController, AlertController } from 'ionic-angular';
 /**
  * Generated class for the OrganizationsPage page.
  *
@@ -24,47 +24,25 @@ export class VideogalleryPage {
   };
   id: any;
   loadingPopup: any;
-  constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
+  constructor(public currentItemsnavCtrl: NavController,
+    public GlobalVars: GlobalVars,
+    public navParams: NavParams,
     public Gallery: Gallery,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
-
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
 
 
     this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
-    if (!user.authenticated) {
-      this.navCtrl.push("LoginPage");
-    }
-    else {
-      this.loadingPopup = this.loadingCtrl.create({
-        content: 'Processing...'
-      });
-      this.loadingPopup.present();//Loader
-      this.Gallery.GetCompanyVideoGallery(this.AppUserModel).subscribe((resp: any) => {
-        setTimeout(() => {
-          this.loadingPopup.dismiss();
-        }, 500);
-
-        this.currentItems = resp.data;
-        console.log(JSON.stringify(this.currentItems));
-
-          if (this.currentItems == null || this.currentItems.length < 1) {
-        let alert1 = this.alertCtrl.create({
-          title: 'Message',
-          subTitle: 'Record not found.',
-          buttons: ['OK']
-        });
-        alert1.present();
-      }
-      }, (err) => {
-
-      });
-    }
+    this.currentItems = this.navParams.data;
+    console.log("One gallery");
+    console.log(this.currentItems);
+    
+    
 
   }
 
@@ -73,9 +51,7 @@ export class VideogalleryPage {
     console.log('ionViewDidLoad OrganizationsPage');
 
   }
-  ionViewWillLeave() {
-    this.loadingPopup.dismiss();
-  }
+  
   viewDetail(item) {
     this.navCtrl.push("EventsDetailPage", { 'record': item })
   }

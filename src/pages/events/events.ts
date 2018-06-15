@@ -52,6 +52,8 @@ export class EventsPage {
         }, 500);
 
         this.currentItems = resp.data;
+        console.log("all events");
+        console.log(JSON.stringify(this.currentItems));
           if (this.currentItems == null || this.currentItems.length < 1) {
         let alert1 = this.alertCtrl.create({
           title: 'Message',
@@ -67,7 +69,12 @@ export class EventsPage {
 
   }
 
-
+  onclick(item)
+  {
+    console.log("Click event ");
+    console.log(JSON.stringify(item));
+    this.navCtrl.push("EventsDetailPage",item);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');
   }

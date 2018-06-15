@@ -1,0 +1,56 @@
+<!--
+  Generated template for the NewsDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>news-details</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<section class="listing-wrapper mg-top-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="card z-depth-1-half mg-top-18 mg-bottom-30">
+						<div class="card-body">
+							<div class="block">
+								<ul class="widget-list">
+									<li class="row">
+										<div class="col-md-4">
+											<div class="inner-content event-name">
+												<h5>
+													<a>{{currenItems.title}}</a> 
+												</h5>
+												<h6>
+													<a>{{currenItems.day}} {{currenItems.month}}</a>
+												</h6>
+												<p [innerHTML]="currenItems.description"></p>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="event-content">
+												<p [innerHTML]="currenItems.activityDetail">
+
+												</p>
+											</div>
+
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</ion-content>

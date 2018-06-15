@@ -9,7 +9,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Video Gallery</ion-title>
+        <ion-title>{{currentItems.galleryName}}</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -18,9 +18,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <ion-item *ngFor="let img of currentItems">
+                        <ion-item *ngFor="let vd of currentItems.lst">
                             <div class="video-container">
-                                <iframe [src]="img.mediaPath|videoLink" frameborder="0" width="100%" height="315"></iframe>
+                                <iframe [src]="vd.mediaPath|videoLink" frameborder="0" width="100%" height="315"></iframe>
                             </div>
                         </ion-item>
                     </div>

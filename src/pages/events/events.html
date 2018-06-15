@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
     <ion-card *ngFor="let item of currentItems">
-        <ion-card-content>
+        <ion-card-content (click)="onclick(item)">
             <ion-card-title>
                 {{item.activityName}}
                 <p> <span>{{item.strStartDate}} - {{item.strEndDate}}</span></p>

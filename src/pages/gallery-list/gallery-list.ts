@@ -56,7 +56,8 @@ export class GalleryListPage {
         }, 500);
 
         this.currentItems = resp.data;
-        //this.currentItems.splice(0);
+        console.log("All Galleries");
+        console.log(JSON.stringify(this.currentItems));
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
             title: 'Message',

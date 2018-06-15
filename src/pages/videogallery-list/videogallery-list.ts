@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angu
 import { Gallery, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
+import { Jsonp } from '@angular/http';
 
 /**
  * Generated class for the VideogalleryListPage page.
@@ -52,6 +53,7 @@ export class VideogalleryListPage {
         }, 500);
 
         this.currentItems = resp.data;
+        console.log("VideoGalleryList");
         console.log(JSON.stringify(this.currentItems));
 
         if (this.currentItems == null || this.currentItems.length < 1) {
@@ -69,6 +71,11 @@ export class VideogalleryListPage {
 
   }
 
+  onClick(list) {
+    this.navCtrl.push("VideogalleryPage", list);
+    // console.log(JSON.stringify(list));
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');

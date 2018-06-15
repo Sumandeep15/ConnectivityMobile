@@ -24,6 +24,8 @@ import { Network } from '@ionic-native/network';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { VideoPipe } from "../pipes/video-link/video-link";
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 
 
 const firebase = {
@@ -75,6 +77,7 @@ export function provideSettings(storage: Storage) {
     Api,
     Items,
     User,
+    PhotoViewer,
     Camera,
 Network,
     SplashScreen,

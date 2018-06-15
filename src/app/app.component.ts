@@ -41,7 +41,7 @@ export class MyApp {
     { title: 'Events', component: EventsPage },
     { title: 'News', component: NewsPage },
     { title: 'Photo Gallery', component: GalleryListPage }, 
-    { title: 'Video Gallery', component: VideogalleryPage }
+    { title: 'Video Gallery', component: VideogalleryListPage }
 // VideogalleryListPage
   ]
   constructor(private sms: SMS,
