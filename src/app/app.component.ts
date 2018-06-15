@@ -58,7 +58,19 @@ export class MyApp {
 
 
     platform.ready().then(() => {
-    //  var myVar = setInterval(alertFunc, 6000);
+      //  var myVar = setInterval(alertFunc, 6000);
+
+      // platform.registerBackButtonAction(() => {
+
+      //   if (this.storage.get("guser") != null) {
+      //     this.rootPage = HomePage;
+      //   }
+      //   else {
+      //     this.rootPage = "WelcomePage"
+      //   }
+      // });
+
+
 
 
       if (this.storage.get("guser") != null) {
@@ -120,7 +132,10 @@ export class MyApp {
   }
 
 
-
+  myHandlerFunction() {
+    //  alert("ssss")
+    this.rootPage = HomePage;
+  }
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('en');
