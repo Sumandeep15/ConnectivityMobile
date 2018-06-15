@@ -17,6 +17,7 @@ import { tap } from 'rxjs/operators';
 import { Network } from '@ionic-native/network';
 import { SMS } from '@ionic-native/sms';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { GalleryListPage, VideogalleryListPage } from '../pages/pages';
 import { Events } from 'ionic-angular';
 @Component({
   templateUrl: 'app.html',
@@ -42,9 +43,11 @@ export class MyApp {
     { title: 'Events', component: EventsPage },
     { title: 'Schedule', component: SchedulePage },
     { title: 'Services', component: ServicesPage },
-    { title: 'Gallery', component: GalleryPage },
-    { title: 'Video Gallery', component: VideogalleryPage },
-
+    { title: 'Events', component: EventsPage },
+    { title: 'News', component: NewsPage },
+    { title: 'Photo Gallery', component: GalleryListPage },
+    { title: 'Video Gallery', component: VideogalleryListPage },
+    { title: 'Logout', component: "LogoutPage" }
   ]
   constructor(private sms: SMS,
     private androidPermissions: AndroidPermissions,
@@ -63,9 +66,9 @@ export class MyApp {
     // alert("ss")
     events.subscribe('company:name', (variable) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
-      this.appHeading =variable
+      this.appHeading = variable
     });
-   // alert(this.GlobalVars.myGlobalVar);
+    // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
 
