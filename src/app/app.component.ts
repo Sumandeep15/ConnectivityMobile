@@ -58,13 +58,14 @@ export class MyApp {
 
 
     platform.ready().then(() => {
-      if(this.storage.get("guser")!= null)
-      {
-        this.rootPage= HomePage;
+    //  var myVar = setInterval(alertFunc, 6000);
+
+
+      if (this.storage.get("guser") != null) {
+        this.rootPage = HomePage;
       }
-      else
-      {
-        this.rootPage =  "WelcomePage"
+      else {
+        this.rootPage = "WelcomePage"
       }
       // Schedule multiple notifications
 
