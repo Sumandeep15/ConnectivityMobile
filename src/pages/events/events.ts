@@ -35,8 +35,6 @@ export class EventsPage {
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
-
-
     this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
     if (!user.authenticated) {
       this.navCtrl.push("LoginPage");

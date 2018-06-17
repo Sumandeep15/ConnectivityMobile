@@ -1,18 +1,18 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GlobalVars {
-  myGlobalVar :any;
-   myCompanyName :any;
+  myGlobalVar: any;
+  CompanyView: any = false;
   constructor() {
     this.myGlobalVar = "";
   }
 
   setMyGlobalVar(value) {
-   // alert(JSON.stringify(value))
+    // alert(JSON.stringify(value))
     this.myGlobalVar = value;
-  //  alert(value.name);
-    this.myCompanyName=value.name;
+    //  alert(value.name);
+
   }
 
   getMyGlobalVar() {

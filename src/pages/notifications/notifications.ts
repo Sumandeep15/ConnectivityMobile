@@ -22,7 +22,7 @@ export class NotificationsPage {
   AppUserModel: { OrganizationId: any } = {
     OrganizationId: 0
   };
-  loadingPopup:any;
+  loadingPopup: any;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Notifications: Notifications,
     public navCtrl: NavController,
@@ -32,6 +32,7 @@ export class NotificationsPage {
     public GlobalVars: GlobalVars,
     private device: Device, public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
+    this.GlobalVars.CompanyView = false;
     if (!user.authenticated) {
       this.navCtrl.push("LoginPage");
     }
@@ -66,7 +67,7 @@ export class NotificationsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     this.loadingPopup.dismiss();
   }
   viewDetail(item) {

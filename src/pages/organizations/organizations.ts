@@ -140,6 +140,7 @@ export class OrganizationsPage {
   }
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);
+    this.GlobalVars.CompanyView=false;
     this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
   }
   /**

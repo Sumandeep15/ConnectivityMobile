@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, MenuController, LoadingController, AlertController } from 'ionic-angular';
 import { SMS } from '@ionic-native/sms';
-import { User } from '../../providers/providers';
+import { User ,GlobalVars} from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
@@ -30,10 +30,11 @@ export class LogoutPage {
     public menu: MenuController,
     private loadingCtrl: LoadingController,
     private androidPermissions: AndroidPermissions,
-    private alertctrl: AlertController) {
+    private alertctrl: AlertController
+    ,public GlobalVars: GlobalVars) {
     this.user.logout();
 
-
+    this.GlobalVars.CompanyView = false;
     this.navCtrl.setRoot("WelcomePage");
   }
 }

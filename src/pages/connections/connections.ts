@@ -47,6 +47,7 @@ export class ConnectionsPage {
       content: 'Processing...'
     });
     loadingPopup.present();//Loader
+    this.GlobalVars.CompanyView = true;
     this.menu.enable(true, 'menu1');
     this.menu.enable(false, 'menu2');
     this.Connections.GetConnections().subscribe((resp: any) => {
