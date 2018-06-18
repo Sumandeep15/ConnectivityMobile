@@ -8,15 +8,16 @@
 </ion-header>
 
 <ion-content scroll="false">
-    <div class="splash-bg"></div>
     <div class="splash-info">
-        <div class="splash-logo"></div>
-        <div class="splash-intro">
-            Easy world through connectivity
+        <div class="logo-container">
+            <img src="assets/images/logo-1.png">
+        </div>
+        <div class="splash-intro" class="copy-right">
+            <p>Easy world through connectivity</p>
         </div>
     </div>
     <div padding>
-        <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
+        <button ion-button block (click)="signup()" class="custom-btn z-depth-2 waves-effect waves-light">{{ 'SIGNUP' | translate }}</button>
         <button ion-button block (click)="login()" class="form-control custom-text login">{{ 'LOGIN' | translate }}</button>
     </div>
 </ion-content>

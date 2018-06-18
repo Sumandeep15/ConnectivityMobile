@@ -50,8 +50,14 @@
                 padding: 0;
             }
 
+            .copy-right p {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 400;
+            }
+
             body p {
-                font-family: 'raleway', monospace;
+                /* font-family: 'raleway', monospace; */
                 font-size: 1em;
                 letter-spacing: 1px;
                 color: #888;
@@ -202,6 +208,7 @@
 
             .text-white {
                 color: #fff !important;
+                font-size: 16px !important;
             }
 
             .text-black {
@@ -213,6 +220,8 @@
                 color: #000 !important;
                 font-size: 16px;
                 font-weight: 600;
+                border-radius: 4px;
+                width: 100%;
             }
 
             .md-form input[type="date"],
@@ -241,7 +250,7 @@
 
             .logo-container img {
                 width: 80%;
-                margin-top: 60%;
+                margin-top: 46%;
             }
 
             .registration-wrapper .logo-container img {
@@ -335,6 +344,17 @@
                 border-bottom: 1px solid #e8e9ef;
             }
 
+            .arrow-btn {
+                float: right;
+                color: #f79420;
+                font-size: 28px;
+                font-weight: 600;
+            }
+
+            .activity {
+                padding: 8px 0 14px 0;
+            }
+
             .widget-list li:last-child {
                 border-bottom: none;
             }
@@ -409,17 +429,19 @@
                 margin-top: 38px;
             }
 
+            .notify-card {
+                min-height: 92px;
+            }
+
             .date-wrapper {
-                position: absolute;
-                top: -36px;
-                left: 42%;
-                padding: 9px 15px;
-                border-radius: 50%;
+                padding: 16px 16px;
+                /* border-radius: 50%; */
                 color: #fff;
-                width: 64px;
-                height: 64px;
+                width: 69px;
+                height: 77px;
                 box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
                 background: #33b5e5;
+                border-radius: 3px;
             }
 
             .date-wrapper p {
@@ -440,13 +462,22 @@
             }
 
             .favourite-btns.share-btns.view-btnclass {
-                right: 27% !important;
+                right: 28% !important;
+            }
+
+            .remove-btn {
+                width: 23% !important;
             }
 
             .event-name p,
             span {
-                font-size: 13px;
+                font-size: 14px;
                 color: #000;
+                text-transform: uppercase;
+                text-overflow: ellipsis;
+                width: 346px;
+                height: 44px;
+                overflow: hidden;
             }
 
             .widget-list .event-img-wrapper img {
@@ -458,11 +489,19 @@
                 color: #2e72e1;
             }
 
+            .event-details {
+                padding: 0px 8px 14px 8px !important;
+                margin-top: 19px !important;
+                line-height: 24px !important;
+                border: 1px solid #e1dfdf !important;
+            }
+
             .event-content p {
                 color: #000;
                 line-height: 21px;
                 font-size: 15px;
                 padding: 18px 0 0 0;
+                line-height: 24px;
             }
 
             .btn-fb {
@@ -1490,6 +1529,7 @@
                 bottom: -24%;
                 font-size: 12px;
                 font-weight: 600;
+                width: 16%;
             }
 
             .advertisement-wrapper {

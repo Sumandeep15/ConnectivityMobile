@@ -39,11 +39,9 @@ export class MyApp {
 
     { title: 'Home', component: HomePage },
     { title: 'Notifications', component: NotificationsPage },
-    { title: 'News', component: NewsPage },
     { title: 'Events', component: EventsPage },
-    { title: 'Schedule', component: SchedulePage },
+    { title: 'Activity', component: SchedulePage },
     { title: 'Services', component: ServicesPage },
-    { title: 'Events', component: EventsPage },
     { title: 'News', component: NewsPage },
     { title: 'Photo Gallery', component: GalleryListPage },
     { title: 'Video Gallery', component: VideogalleryListPage },
@@ -182,8 +180,8 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  // homebtn() {
-  //   this.navCtrl.setRoot(HomePage);
-  //   console.log("homebtn");
-  // }
+  homebtn() {
+    this.nav.setRoot(HomePage);
+    console.log("homebtn");
+  }
 }

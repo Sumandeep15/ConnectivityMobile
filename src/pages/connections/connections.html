@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>Connections</ion-title>
     </ion-navbar>
 </ion-header>
@@ -20,23 +20,25 @@
                                 <ul class="widget-list">
                                     <li>
                                         <figure>
-                                            <a >
+                                            <a>
                                                 <img alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{item.imagePath}}">
                                             </a>
                                         </figure>
                                         <div class="inner-content">
-                                            <h5><a >{{item.name}}</a></h5>
+                                            <h5>
+                                                <a>{{item.name}}</a>
+                                            </h5>
                                             <span>{{item.city}}</span>
                                         </div>
 
                                         <div class="share-btn">
 
                                             <button (click)="viewCompany(item)" class="btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light view-btnclass">
-        View
-                    </button>
-                                            <button (click)="removeItem(item)" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">
-        Remove
-                    </button>
+                                                View
+                                            </button>
+                                            <button (click)="removeItem(item)" class="btn btn-info btn-sm favourite-btns remove-btn share-btns pull-left group-btns waves-effect waves-light">
+                                                Remove
+                                            </button>
 
                                         </div>
                                     </li>

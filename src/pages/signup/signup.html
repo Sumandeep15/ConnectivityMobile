@@ -24,30 +24,30 @@
                         <!-- Material input Name -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
-                            <label for="materialFormRegisterNameEx" class="label text-white">Full Name</label>
+                            <input placeholder="Full Name" type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
+                            <!-- <label for="materialFormRegisterNameEx" class="label text-white">Full Name</label> -->
                         </div>
 
                         <!-- Material input Email -->
                         <div class="md-form">
                             <i class="fa fa-building prefix grey-text text-white"></i>
-                            <input type="email" id="materialFormRegistercodeEx" type="email" [(ngModel)]="account.Email" required name="Email" class="form-control input input custom-text">
-                            <label for="materialFormRegistercodeEx" class="text-white label">Email</label>
+                            <input placeholder="Email" type="email" id="materialFormRegistercodeEx" type="email" [(ngModel)]="account.Email" required name="Email" class="form-control input input custom-text">
+                            <!-- <label for="materialFormRegistercodeEx" class="text-white label">Email</label> -->
                         </div>
 
                         <!-- Material input Mobile -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text text-white"></i>
-                            <input type="number" [pattern]="userpattern" #usernum="ngModel" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10" class="form-control input input custom-text">
-                            <label for="materialFormRegisterEmailEx" class="text-white label">Mobile</label>
+                            <input placeholder="Mobile" type="number" [pattern]="mobpattern" #usernum="ngModel" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10" class="form-control input input custom-text">
+                            <!-- <label for="materialFormRegisterEmailEx" class="text-white label">Mobile</label> -->
                             <div class="alert  alertnumber" *ngIf="usernum.errors?.pattern">
                                 Invalid Phone Number
                             </div>
                         </div>
                         <div class="md-form">
                             <i class="fa fa-building prefix grey-text text-white"></i>
-                            <input type="Password" id="materialFormRegistercodePasswordEx" [(ngModel)]="account.Password" required name="Password" class="form-control input input custom-text">
-                            <label for="materialFormRegistercodePasswordEx" class="text-white label">Password</label>
+                            <input type="Password" placeholder="Password" id="materialFormRegistercodePasswordEx" [(ngModel)]="account.Password" required name="Password" class="form-control input input custom-text">
+                            <!-- <label for="materialFormRegistercodePasswordEx" class="text-white label">Password</label> -->
                         </div>
 
                         <div class="text-center mt-4">

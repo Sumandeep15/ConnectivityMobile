@@ -19,6 +19,7 @@ currenItems:any;
     public navCtrl: NavController,
     public navParams: NavParams) {
   this.currenItems = this.navParams.data;
+  console.log(JSON.stringify(this.currenItems));
     }
 
   ionViewDidLoad() {

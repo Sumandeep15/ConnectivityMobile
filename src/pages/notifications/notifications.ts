@@ -63,7 +63,13 @@ export class NotificationsPage {
       });
     }
   }
-
+  onTouch(data) {
+    this.alertCtrl.create({
+      title: data.subject,
+      subTitle: data.detail,
+      buttons: ['OK']
+    }).present();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');
   }
