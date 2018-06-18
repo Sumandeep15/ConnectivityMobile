@@ -5,11 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
 	<ion-navbar>
 		<ion-title>{{currenItems.title}}</ion-title>
 	</ion-navbar>
-
 </ion-header>
 
 
@@ -24,12 +22,12 @@
 								<ul class="widget-list">
 									<li class="row">
 										<div class="col-md-4">
-											<div class="inner-content event-name">
-												<h5>
-													<a>{{currenItems.title}}</a> 
-												</h5>
+											<div class="inner-content ">
+												<h3>
+													{{currenItems.title}} 
+												</h3>
 												<h6>
-													<a>{{currenItems.day}} {{currenItems.month}}</a>
+													{{currenItems.day}} {{currenItems.month}}
 												</h6>
 												<p [innerHTML]="currenItems.description"></p>
 											</div>
