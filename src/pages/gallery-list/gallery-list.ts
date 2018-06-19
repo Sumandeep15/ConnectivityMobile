@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Api, Gallery, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
@@ -38,7 +38,8 @@ export class GalleryListPage {
     public api: Api,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private platform: Platform) {
 
     this.apiUrl = api.url;
     this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
@@ -73,11 +74,11 @@ export class GalleryListPage {
 
       });
     }
-
+   
   }
 
   onCilck(list) {
-    this.navCtrl.push("GalleryPage",list);
+    this.navCtrl.push("GalleryPage", list);
     // console.log(JSON.stringify(list));
 
   }

@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>Notifications</ion-title>
     </ion-navbar>
 </ion-header>
@@ -15,16 +15,21 @@
                     <div class="card-body ">
                         <div class="block">
                             <ul class="widget-list">
-                                <li >
+                                <li>
                                     <!--<div class="date-wrapper">
                                     <h4 class="text-center">15 </h4>
                                     <h6 class="text-center">Nov</h6>
                                     <!--<p class="text-center">Nov</p>
                     </div>-->
-                                    <div class="inner-content event-name ">
-                                        <h4><b>{{item.subject}}({{item.companyName}})</b></h4>
-
-                                        <p [innerHTML]="item.detail"></p>
+                                    <div class="inner-content notification-card event-name ">
+                                        <h4>
+                                            <b>{{item.subject}}({{item.companyName}})</b>
+                                        </h4>
+                                        <h4 class="custom-date">
+                                            Recieved on {{item.createdDate | date:'dd/MM/yyyy'}}
+                                        </h4>
+                                        <p style="float: left" [innerHTML]="item.detail"></p>
+                                        <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
                                     </div>
                                     <!--<div class="share-btn">
                                         <button (click)="viewDetail(item)" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">View </button>

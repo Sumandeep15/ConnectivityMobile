@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 
 import { Notifications, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
@@ -30,8 +30,11 @@ export class NotificationsPage {
     public translateService: TranslateService,
     public user: User,
     public GlobalVars: GlobalVars,
-    private device: Device, public menu: MenuController, private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+    private device: Device,
+    public menu: MenuController,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private platform: Platform) {
     this.GlobalVars.CompanyView = false;
     if (!user.authenticated) {
       this.navCtrl.push("LoginPage");
@@ -49,7 +52,7 @@ export class NotificationsPage {
           this.loadingPopup.dismiss();
         }, 500);
         console.log(this.AppUserModel);
-        console.log(this.currentItems);//Data
+        console.log(JSON.stringify(this.currentItems));//Data
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
             title: 'Message',
@@ -62,13 +65,10 @@ export class NotificationsPage {
 
       });
     }
+
   }
   onTouch(data) {
-    this.alertCtrl.create({
-      title: data.subject,
-      subTitle: data.detail,
-      buttons: ['OK']
-    }).present();
+    this.navCtrl.push("NotificationsDetailsPage", data)
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');

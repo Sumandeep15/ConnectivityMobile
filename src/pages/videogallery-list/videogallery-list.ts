@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Gallery, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
@@ -32,7 +32,7 @@ export class VideogalleryListPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
-
+private platform:Platform,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {

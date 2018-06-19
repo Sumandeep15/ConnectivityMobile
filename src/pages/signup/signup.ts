@@ -26,6 +26,7 @@ export class SignupPage {
     OTP: '',
     Password:''
   };
+  namepattern = /^[a-z A-Z]+$/;
   mobpattern = /^\d{8,13}$/;
   // Our translated text strings
   private signupErrorString: string;
@@ -99,7 +100,7 @@ export class SignupPage {
   doSignup() {
 
 
-    if (this.account.Name == "" || this.account.Mobile == null || this.account.Email == "") {
+    if (this.account.Name == "" || this.account.Mobile == null || this.account.Email == "" || this.account.Password=="") {
       this.toastCtrl.create({
         message: "Please enter all details.",
         duration: 3000,
@@ -169,7 +170,7 @@ export class SignupPage {
       }
     }, (err) => {
 
-      this.navCtrl.push("LoginPage");
+      this.navCtrl.setRoot("LoginPage");
       let toast = this.toastCtrl.create({
         message: this.signupErrorString,
         duration: 3000,

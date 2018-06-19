@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Events, Api } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 /**
@@ -19,20 +19,18 @@ import { Device } from '@ionic-native/device';
 export class EventsDetailPage {
   currentItem: any;
   apiUrl;
-  AppUserModel:any;
+  AppUserModel: any;
   constructor(
     public navCtrl: NavController,
-     public navParams: NavParams,
-    private api:Api) {
+    public navParams: NavParams,
+    private platform: Platform,
+    private api: Api) {
     this.AppUserModel = this.navParams.data;
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
     this.currentItem = this.AppUserModel;
-    this.apiUrl=api.url;
+    this.apiUrl = api.url;
     console.log("current event")
     console.log(this.currentItem);
-    //  }, (err) => {
-
-    // });  
   }
 
   ionViewDidLoad() {

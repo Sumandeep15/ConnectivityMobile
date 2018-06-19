@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>Home</ion-title>
     </ion-navbar>
 </ion-header>
@@ -15,28 +15,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card z-depth-1-half mg-top-36" *ngFor="let item of currentItems">
+                    <div class="card organizations z-depth-1-half mg-top-36" *ngFor="let item of currentItems">
                         <div class="card-body" id='click{{item.id}}'>
                             <div class="block">
                                 <ul class="widget-list">
                                     <li>
                                         <figure>
-                                            <a >
-                                                <img alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{item.imagePath}}">
+                                            <a>
+                                                    <img alt="No Image"  class="tabs-thumb wp-post-image group-t-img"
+                                                         onError="this.src='../../assets/icon/no-image.png' ;" src="{{apiURL}}{{item.imagePath}}">
+                                                
                                             </a>
                                         </figure>
                                         <div class="inner-content">
-                                            <h5><a >{{item.name}}</a></h5>
+                                            <h5>
+                                                <a>{{item.name}}</a>
+                                            </h5>
                                             <span>{{item.city}}</span>
                                         </div>
 
                                         <div class="share-btn">
                                             <button (click)="viewCompany(item)" class="btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light">
-        View
-                    </button>
+                                                View
+                                            </button>
                                             <button (click)="addItem(item)" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">
-        Join
-                    </button>
+                                                Join
+                                            </button>
                                         </div>
                                     </li>
                                 </ul>

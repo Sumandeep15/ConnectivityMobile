@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 
 import { Schedule, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
@@ -30,8 +30,11 @@ export class SchedulePage {
     public translateService: TranslateService,
     public user: User,
     public GlobalVars: GlobalVars,
-    private device: Device, public menu: MenuController, private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+    private device: Device,
+    public menu: MenuController,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private platform: Platform) {
     if (!user.authenticated) {
       this.navCtrl.push("LoginPage");
     }
@@ -59,6 +62,7 @@ export class SchedulePage {
 
       });
     }
+   
   }
 
   ionViewDidLoad() {

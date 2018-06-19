@@ -22,6 +22,31 @@
                 color: white !important;
             }
 
+            .notification-card p {
+                width: auto !important;
+                height: auto !important;
+            }
+
+            .notification-details {
+                margin-top: -25px;
+            }
+
+            .notification-card h4:first-child {
+                font-size: 23px;
+            }
+
+            .notification-card h4.custom-date {
+                font-size: 18px;
+            }
+
+            .organizations .card-body {
+                -webkit-box-flex: 1;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                /* padding: 1.25rem; */
+                padding: 9px 0 0 12px !important;
+            }
+
             .customgradient {
                 background: linear-gradient(#ffc14d, white);
             }
@@ -31,6 +56,10 @@
                 position: absolute;
                 top: -10px;
                 right: 0px;
+            }
+
+            .alertname {
+                top: -27px;
             }
 
             .input {
@@ -426,7 +455,7 @@
             }
 
             .mg-top-36 {
-                margin-top: 38px;
+                margin-top: 31px;
             }
 
             .notify-card {
@@ -1529,7 +1558,7 @@
                 bottom: -24%;
                 font-size: 12px;
                 font-weight: 600;
-                width: 16%;
+                width: auto;
             }
 
             .advertisement-wrapper {

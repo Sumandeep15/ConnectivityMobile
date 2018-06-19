@@ -47,13 +47,16 @@ export class MyApp {
     { title: 'Video Gallery', component: VideogalleryListPage },
     { title: 'Logout', component: "LogoutPage" }
   ]
+
+  alertcon: any;
+  alertexit: any;
   constructor(private sms: SMS,
     private androidPermissions: AndroidPermissions,
     private network: Network,
     toastCtrl: ToastController,
     private alertCtrl: AlertController,
     private translate: TranslateService,
-    platform: Platform,
+    private platform: Platform,
     public GlobalVars: GlobalVars,
     settings: Settings,
     private config: Config,
@@ -83,7 +86,7 @@ export class MyApp {
       // });
 
 
-
+      
 
       if (this.storage.get("guser") != null) {
         this.rootPage = HomePage;
@@ -91,10 +94,8 @@ export class MyApp {
       else {
         this.rootPage = "WelcomePage"
       }
-      // Schedule multiple notifications
 
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
       this.androidPermissions.requestPermissions(
         [this.androidPermissions.PERMISSION.SEND_SMS,
         this.androidPermissions.PERMISSION.READ_PHONE_STATE]);
@@ -102,24 +103,29 @@ export class MyApp {
     });
 
     let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-      let alert1 = this.alertCtrl.create({
-        title: 'Alert',
-        subTitle: 'Internet not found.',
-        buttons: ['OK']
-      });
-      alert1.present();
+      if (this.alertcon == null) {
+        this.alertcon = this.alertCtrl.create({
+          title: 'Alert',
+          subTitle: 'No Internet Connection Available',
+          buttons: [{
+            text: 'OK',
+            role: 'cancel',
+            handler: () => {
+              this.alertcon = null;
+            }
+          }]
+        });
+        this.alertcon.present();
+      }
+      else {
+        this.alertcon.present();
+      }
     });
 
-    // stop disconnect watch
-    // disconnectSubscription.unsubscribe();
 
 
-    // watch network for a connection
     let connectSubscription = this.network.onConnect().subscribe(() => {
-      // console.log('network connected!');
-      // We just got a connection but we need to wait briefly
-      // before we determine the connection type. Might need to wait.
-      // prior to doing any api requests as well.
+
       setTimeout(() => {
         if (this.network.type === 'wifi') {
           console.log('we got a wifi connection, woohoo!');
@@ -175,13 +181,9 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+
     this.nav.setRoot(page.component);
   }
 
-  homebtn() {
-    this.nav.setRoot(HomePage);
-    console.log("homebtn");
-  }
+
 }

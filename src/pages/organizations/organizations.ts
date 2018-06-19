@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Api, Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
 import { MenuController, LoadingController, AlertController } from 'ionic-angular';
@@ -19,7 +19,7 @@ import { Events } from 'ionic-angular';
 
 })
 export class OrganizationsPage {
-
+  alertexit: any
   currentItems: any;
   fullItems: any;
   apiURL: any;
@@ -27,7 +27,8 @@ export class OrganizationsPage {
 
     OrganizationId: 0
   };
-  constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
+  constructor(public currentItemsnavCtrl: NavController,
+    public navParams: NavParams,
     public Organizations: Organizations,
     public StorageService: StorageService,
     public navCtrl: NavController,
@@ -39,8 +40,9 @@ export class OrganizationsPage {
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-     public events: Events) {
- this.events.publish('company:name', "Connectivity");
+    public events: Events,
+    private platform: Platform) {
+    this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url;
     let loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'
@@ -67,6 +69,37 @@ export class OrganizationsPage {
     }, (err) => {
 
     });
+    this.platform.registerBackButtonAction(() => {
+      if (this.navCtrl.canGoBack()) {
+        this.navCtrl.pop();
+      }
+      else {
+        if (this.alertexit == undefined) {
+          this.alertexit = this.alertCtrl.create({
+            title: 'Exit Application',
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  this.platform.exitApp()
+                }
+              },
+              {
+                text: 'Cancel',
+                role: 'cancel',
+                handler: () => {
+                  this.alertexit = undefined;
+                }
+              }
+            ]
+          }).present();
+        }
+
+      }
+
+
+
+    }, 1);
   }
   initializeItems(ev: any) {
     this.currentItems = this.fullItems;
@@ -140,7 +173,7 @@ export class OrganizationsPage {
   }
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);
-    this.GlobalVars.CompanyView=false;
+    this.GlobalVars.CompanyView = false;
     this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
   }
   /**

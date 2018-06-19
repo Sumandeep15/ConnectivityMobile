@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import {
   Services, GlobalVars
 } from '../../providers/providers';
@@ -33,7 +33,8 @@ export class ServicesPage {
     private loadingCtrl: LoadingController,
     public GlobalVars: GlobalVars,
     private device: Device,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private platform: Platform) {
     //   this.AppUserModel.OrganizationId = this.navParams.get('id');
     this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
     this.loadingPopup = this.loadingCtrl.create({
@@ -59,6 +60,7 @@ export class ServicesPage {
     }, (err) => {
 
     });
+    
   }
 
   ionViewDidLoad() {

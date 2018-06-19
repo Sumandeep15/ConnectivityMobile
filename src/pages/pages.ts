@@ -23,8 +23,10 @@ export const MenuPage='MenuPage'
 export const GalleryPage = 'GalleryPage'
 export const GalleryListPage = 'GalleryListPage'
 export const NotificationsPage='NotificationsPage'
+export const NotificationsDetailsPage = 'NotificationsDetailsPage';
 export const VideogalleryPage='VideogalleryPage'
 export const VideogalleryListPage = 'VideogalleryListPage';
+
 
 
 

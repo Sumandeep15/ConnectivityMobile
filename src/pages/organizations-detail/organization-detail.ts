@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Items } from '../../providers/providers';
 import { MenuController } from 'ionic-angular';
 import { Api, Organizations, StorageService, User, GlobalVars } from '../../providers/providers';
@@ -18,16 +18,23 @@ export class OrganizationDetailPage {
     contactUs: any
   } = {
 
-    aboutUs: "-",
-    contactUs: "-"
-  };
-  constructor(public events: Events, public navCtrl: NavController, public api: Api, public GlobalVars: GlobalVars, public navParams: NavParams, public menu: MenuController, public Organizations: Organizations) {
+      aboutUs: "-",
+      contactUs: "-"
+    };
+  constructor(public events: Events,
+    public navCtrl: NavController,
+    public api: Api,
+    public GlobalVars: GlobalVars,
+    public navParams: NavParams,
+    public menu: MenuController,
+    public Organizations: Organizations,
+    public platform: Platform) {
     this.currentItem = this.GlobalVars.getMyGlobalVar();
     this.events.publish('company:name', this.currentItem.name);
     this.apiURL = api.url;
     // alert(JSON.stringify(this.AppUserModel))
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
-   //   alert(this.GlobalVars.CompanyView );
+    //   alert(this.GlobalVars.CompanyView );
     if (this.GlobalVars.CompanyView == true) {
       this.menu.enable(false, 'menu1');
       this.menu.enable(true, 'menu2');
@@ -43,6 +50,7 @@ export class OrganizationDetailPage {
     }, (err) => {
 
     });
+    
   }
   ionViewDidLoad() {
 

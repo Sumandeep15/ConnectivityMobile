@@ -24,8 +24,11 @@
                         <!-- Material input Name -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text text-white"></i>
-                            <input placeholder="Full Name" type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
+                            <input placeholder="Full Name" maxlength="40" [pattern]="namepattern" #username="ngModel" type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
                             <!-- <label for="materialFormRegisterNameEx" class="label text-white">Full Name</label> -->
+                            <div class="alert  alertnumber alertname" *ngIf="username.errors?.pattern">
+                                 Valid characters are A-Z a-z
+                            </div>
                         </div>
 
                         <!-- Material input Email -->
@@ -38,7 +41,7 @@
                         <!-- Material input Mobile -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text text-white"></i>
-                            <input placeholder="Mobile" type="number" [pattern]="mobpattern" #usernum="ngModel" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10" class="form-control input input custom-text">
+                            <input placeholder="Mobile" type="number" minlength="8" [pattern]="mobpattern" #usernum="ngModel" id="materialFormRegisterEmailEx" [(ngModel)]="account.Mobile" name="Mobile" required minlength="10" maxlength="10" class="form-control input input custom-text">
                             <!-- <label for="materialFormRegisterEmailEx" class="text-white label">Mobile</label> -->
                             <div class="alert  alertnumber" *ngIf="usernum.errors?.pattern">
                                 Invalid Phone Number

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 
 import { Api, Connections, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
@@ -34,6 +34,7 @@ export class ConnectionsPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
+    public platform:Platform,
     public user: User,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
@@ -119,6 +120,7 @@ export class ConnectionsPage {
       });
       toast.present();
     });
+    
   }
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);

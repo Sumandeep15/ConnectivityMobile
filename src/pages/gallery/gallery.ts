@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Api, Gallery, User, GlobalVars } from '../../providers/providers';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 
@@ -29,12 +29,15 @@ export class GalleryPage {
     public Gallery: Gallery,
     public navCtrl: NavController,
     public api: Api,
-    public photoViewer: PhotoViewer) {
+    public photoViewer: PhotoViewer, 
+    private platform:Platform) {
 
     this.currentItems = this.navParams.data;
     console.log("One Gallery");
     console.log(JSON.stringify(this.currentItems));
     this.apiUrl = api.url;
+
+  
   }
 
   openImg(apiurl, imgurl, imgname) {
