@@ -33,8 +33,8 @@ export class GalleryPage {
     private platform:Platform) {
 
     this.currentItems = this.navParams.data;
-    console.log("One Gallery");
-    console.log(JSON.stringify(this.currentItems));
+    // console.log("One Gallery");
+    // console.log(JSON.stringify(this.currentItems));
     this.apiUrl = api.url;
 
   
@@ -42,7 +42,7 @@ export class GalleryPage {
 
   openImg(apiurl, imgurl, imgname) {
     this.photoViewer.show(apiurl + imgurl + "/" + imgname, imgname, { share: false });
-    console.log(apiurl + imgurl + "/" + imgname);
+    // console.log(apiurl + imgurl + "/" + imgname);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrganizationsPage');

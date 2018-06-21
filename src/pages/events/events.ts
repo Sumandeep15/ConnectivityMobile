@@ -50,8 +50,8 @@ private platform:Platform,
         }, 500);
 
         this.currentItems = resp.data;
-        console.log("all events");
-        console.log(JSON.stringify(this.currentItems));
+        // console.log("all events");
+        // console.log(JSON.stringify(this.currentItems));
           if (this.currentItems == null || this.currentItems.length < 1) {
         let alert1 = this.alertCtrl.create({
           title: 'Message',
@@ -69,12 +69,12 @@ private platform:Platform,
 
   onclick(item)
   {
-    console.log("Click event ");
-    console.log(JSON.stringify(item));
+    // console.log("Click event ");
+    // console.log(JSON.stringify(item));
     this.navCtrl.push("EventsDetailPage",item);
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrganizationsPage');
+    // console.log('ionViewDidLoad OrganizationsPage');
   }
   ionViewWillLeave() {
     this.loadingPopup.dismiss();

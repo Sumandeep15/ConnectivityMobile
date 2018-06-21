@@ -14,5 +14,16 @@
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <img src="{{apiURL}}{{curentItem.companyImage}}" class="tabs-thumb wp-post-image group-t-img" onError="this.src='../../assets/images/no-image.png' ;">
+      <ion-card-title>
+        {{curentItem.name}}
 
+      </ion-card-title>
+      <p>
+        {{curentItem.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

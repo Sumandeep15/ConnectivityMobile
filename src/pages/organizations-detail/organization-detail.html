@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>About Us</ion-title>
     </ion-navbar>
 </ion-header>
@@ -21,13 +21,15 @@
                                         <div class="col-md-8">
                                             <div class="event-img-wrapper">
                                                 <figure>
-                                                    <img onError="this.src='../../assets/icon/no-image.png' ;" alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{currentItem.imagePath}}">
+                                                    <img onError="this.src='../../assets/images/no-image.png ';" alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{currentItem.imagePath}}">
                                                 </figure>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="inner-content event-name">
-                                                <h5><a>About Us</a></h5>
+                                                <h5>
+                                                    <a>About Us</a>
+                                                </h5>
 
                                             </div>
                                         </div>
@@ -37,18 +39,13 @@
                                                 <span class="large" [innerHtml]="AppUserModel.aboutUs"></span>
 
                                             </div>
-
-                                        </div>
-                                        <!-- <div class="col-md-12">
-                                            <div class="event-content">
-
-                                                <span class="large" >
-                                                    {{AppUserModel.aboutUs}}
-                                                </span>
+                                            <div *ngIf="!globalVar" class="share-btn">
+                                                <button (click)="addItem()" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">
+                                                    Join
+                                                </button>
 
                                             </div>
-
-                                        </div> -->
+                                        </div>
 
                                     </li>
                                 </ul>

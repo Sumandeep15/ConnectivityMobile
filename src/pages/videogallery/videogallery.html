@@ -10,24 +10,32 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-list>
-        <div class="card">
+    <div *ngIf="currentItems.lst" class="card card-vgallery z-depth-1-half">
+        <div class="row ">
+            <div style="padding-left: 23px;" class="col">
+                <h4>
+                    {{currentItems.galleryName}}
+                </h4>
+            </div>
+        </div>
+    </div>
+        <div class="card card-vgallery" *ngFor="let vd of currentItems.lst"  >
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <ion-item *ngFor="let vd of currentItems.lst">
-                            <div class="video-container">
-                                <iframe [src]="vd.mediaPath|videoLink" frameborder="0" width="100%" height="315"></iframe>
-                            </div>
-                        </ion-item>
+                        <div class="video-container">
+                            <iframe [src]="vd.mediaPath|videoLink" frameborder="0" width="100%" height="315"></iframe>
+                        </div>
+                        <h4 class="paddingclass">{{vd.mediaName}}</h4>
+                        <p class="paddingclass">{{vd.mediaDesc}}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="back-btn-wrapper">
+    <!-- <div class="back-btn-wrapper">
             <a (click)="homebtn()" class="btn btn-default z-depth-2">
                 <i class="fa fa-home faclass"></i>
             </a>
         </div> -->
-    </ion-list>
+
 </ion-content>

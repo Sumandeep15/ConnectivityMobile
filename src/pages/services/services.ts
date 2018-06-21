@@ -60,9 +60,12 @@ export class ServicesPage {
     }, (err) => {
 
     });
-    
-  }
 
+  }
+  onClk(data) {
+    console.log(JSON.stringify(data));
+    this.navCtrl.push("ServicesDetailsPage",data);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
   }

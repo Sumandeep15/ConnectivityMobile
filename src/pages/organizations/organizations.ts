@@ -53,7 +53,7 @@ export class OrganizationsPage {
 
 
 
-
+    this.GlobalVars.previousView = "OrganizationsPage";
     this.Organizations.list().subscribe((resp: any) => {
       setTimeout(() => {
         loadingPopup.dismiss();
@@ -73,7 +73,14 @@ export class OrganizationsPage {
       if (this.navCtrl.canGoBack()) {
         this.navCtrl.pop();
       }
-      else {
+      else if (this.GlobalVars.CompanyView == false && this.GlobalVars.previousView == null) {
+        this.navCtrl.setRoot("OrganizationsPage");
+      }
+      else if (this.GlobalVars.CompanyView == true && this.GlobalVars.previousView == null)
+      {
+        this.navCtrl.setRoot("ConnectionsPage");
+      }
+      else if (this.GlobalVars.previousView == "OrganizationsPage" || this.GlobalVars.previousView == "ConnectionsPage") {
         if (this.alertexit == undefined) {
           this.alertexit = this.alertCtrl.create({
             title: 'Exit Application',
@@ -126,6 +133,9 @@ export class OrganizationsPage {
 
     // console.log('ionViewDidLoad ConnectionsPage');
   }
+  ionViewDidLeave(){
+    this.GlobalVars.previousView = null;
+  }
   delete(item: any) {
     this.currentItems.splice(this.currentItems.indexOf(item), 1);
   }
@@ -174,7 +184,10 @@ export class OrganizationsPage {
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);
     this.GlobalVars.CompanyView = false;
-    this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
+    this.navCtrl.setRoot("OrganizationDetailPage", item)
+    console.log(JSON.stringify(item));
+    console.log(item);
+
   }
   /**
    * Navigate to the detail page for this item.

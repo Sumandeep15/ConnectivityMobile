@@ -51,8 +51,8 @@ export class NotificationsPage {
         setTimeout(() => {
           this.loadingPopup.dismiss();
         }, 500);
-        console.log(this.AppUserModel);
-        console.log(JSON.stringify(this.currentItems));//Data
+        // console.log(this.AppUserModel);
+        // console.log(JSON.stringify(this.currentItems));//Data
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
             title: 'Message',
@@ -71,7 +71,7 @@ export class NotificationsPage {
     this.navCtrl.push("NotificationsDetailsPage", data)
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationsPage');
+    // console.log('ionViewDidLoad NotificationsPage');
   }
   ionViewWillLeave() {
     this.loadingPopup.dismiss();

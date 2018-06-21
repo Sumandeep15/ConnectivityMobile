@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content class="mg-top-30">
-    <ion-card *ngFor="let item of currentItems">
-        <ion-card-content>
+    <ion-card *ngFor="let item of currentItems" (click)="onClk(item)">
+        <ion-card-content >
             <ion-card-title>
                 {{item.name}}
 

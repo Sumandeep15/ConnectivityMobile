@@ -6,17 +6,25 @@
 
 
 <ion-content padding>
-
-    <div class="card z-depth-1-half">
+    <div *ngIf="currentItems.lst" class="card z-depth-1-half">
+        <div class="row">
+            <div style="padding-left: 23px;" class="col">
+                <h4>
+                    {{currentItems.galleryName}}
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="card card-pgallery z-depth-1-half" *ngFor="let img of currentItems.lst">
         <div class="card-body">
-             {{currentItems.galleryName}}
             <div class="row">
                 <div class="col">
-                    <div *ngFor="let img of currentItems.lst">
+                    <div>
                         <div class="gallery-pic">
                             <figure align="center">
 
-                                <img onError="this.src='../../assets/icon/no-image.png' ;" src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" (click)="openImg(apiUrl,img.mediaPath,img.mediaName)" class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
+                                <img onError="this.src='../../assets/images/no-image.png' ;" src="{{apiUrl}}{{img.mediaPath}}/{{img.mediaName}}" (click)="openImg(apiUrl,img.mediaPath,img.mediaName)"
+                                    class="img-thumbnail img-fluid mx-auto d-block  z-depth-1">
 
                             </figure>
                         </div>

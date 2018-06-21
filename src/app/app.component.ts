@@ -38,6 +38,7 @@ export class MyApp {
   pages1: any[] = [
 
     { title: 'Home', component: HomePage },
+    { title: 'My Connections', component: ConnectionsPage },
     { title: 'Notifications', component: NotificationsPage },
     { title: 'Events', component: EventsPage },
     { title: 'Activity', component: SchedulePage },
