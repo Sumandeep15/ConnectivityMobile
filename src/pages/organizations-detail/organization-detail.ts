@@ -96,6 +96,8 @@ export class OrganizationDetailPage {
         });
         toast.present();
       });
+    this.menu.enable(false, 'menu1');
+    this.menu.enable(true, 'menu2');
   }
 
   ionViewDidLoad() {

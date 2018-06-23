@@ -87,7 +87,7 @@ export class MyApp {
       // });
 
 
-      
+
 
       if (this.storage.get("guser") != null) {
         this.rootPage = HomePage;
@@ -182,8 +182,42 @@ export class MyApp {
   }
 
   openPage(page) {
+    if (page.component == "OrganizationsPage" || page.component == "ConnectionsPage")
+    {
+      this.GlobalVars.previousView.push(page.component);
+      this.nav.setRoot(page.component);
+    }
+    else if (page.component == "LogoutPage")
+    {
+      if (this.alertexit == undefined) {
+        this.alertexit = this.alertCtrl.create({
+          title: 'Logout',
+          subTitle: 'Are You Sure?',
+          buttons: [
+            {
+              text: 'Yes',
+              handler: () => {
+                this.nav.setRoot(page.component);
+              }
+            },
+            {
+              text: 'No',
+              role: 'cancel',
+              handler: () => {
+                this.alertexit = undefined
+              }
+            }
+          ]
+        }).present();
+      }
+      else {
+        this.alertexit.present();
+      }
+    }
+    else{
+      this.nav.setRoot(page.component);
+    }    
 
-    this.nav.setRoot(page.component);
   }
 
 

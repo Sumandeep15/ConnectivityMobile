@@ -70,13 +70,19 @@ export class NotificationsPage {
   onTouch(data) {
     this.navCtrl.push("NotificationsDetailsPage", data)
   }
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad NotificationsPage');
-  }
-  ionViewWillLeave() {
-    this.loadingPopup.dismiss();
-  }
   viewDetail(item) {
     this.navCtrl.push("NotificationsDetailPage", { 'record': item })
   }
+
+  ionViewDidLoad() {
+    // console.log('ionViewDidLoad NotificationsPage');
+  }
+  ionViewDidEnter() {
+    this.GlobalVars.currentpage = "NotificationsPage";
+  }
+  ionViewWillLeave() {
+    this.loadingPopup.dismiss();
+    this.GlobalVars.currentpage = null;
+  }
+
 }

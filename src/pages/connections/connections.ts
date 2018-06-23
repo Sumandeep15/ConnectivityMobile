@@ -41,7 +41,6 @@ export class ConnectionsPage {
     public GlobalVars: GlobalVars,
     private alertCtrl: AlertController,
     public events: Events) {
-    this.GlobalVars.previousView = "ConnectionsPage"
     this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url
     let loadingPopup = this.loadingCtrl.create({
@@ -71,10 +70,7 @@ export class ConnectionsPage {
   delete(item: any) {
     this.currentItems.splice(this.currentItems.indexOf(item), 1);
   }
-  ionViewDidLoad() {
-
-    // console.log('ionViewDidLoad ConnectionsPage');
-  }
+  
 
   viewEvents(id) {
     this.navCtrl.push(EventsPage, { 'id': id })
@@ -92,11 +88,13 @@ export class ConnectionsPage {
       subTitle: 'Remove <stong>'+ item.name +"<strong>.",
       buttons: [{
         text: 'Yes',
-        handler: () => {
+        handler: () => 
+        {
           let loadingPopup = this.loadingCtrl.create({
             content: 'Processing...'
           });
           loadingPopup.present();//Loader
+          
           this.Connections.unlinkOrganization(this.AppUserModel).subscribe((resp) => {
             if (resp) {
               setTimeout(() => {
@@ -140,7 +138,15 @@ export class ConnectionsPage {
     this.GlobalVars.setMyGlobalVar(item);
     this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
   }
-  ionViewDidLeave() {
-    this.GlobalVars.previousView = null;
+  ionViewDidLoad() {
+
+  }
+  ionViewDidEnter() {
+    this.GlobalVars.currentpage = "ConnectionsPage";
+    
+  }
+  ionViewWillLeave() {
+    this.GlobalVars.currentpage = null;
+    
   }
 }
