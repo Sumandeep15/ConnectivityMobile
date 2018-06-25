@@ -137,15 +137,15 @@ export class OrganizationsPage {
 
     // set val to the value of the searchbar
     let val = ev.target.value;
-
+    //alert(val);
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '' && this.currentItems != null) {
       this.currentItems = this.currentItems.filter((item) => {
-
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1
-          || item.strCity.toLowerCase().indexOf(val.toLowerCase()) > -1
-          || item.strState.toLowerCase().indexOf(val.toLowerCase()) > -1
-          || item.strCountry.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        //alert(JSON.stringify(item))
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+          // || (item.strCity != null && item.strCity.toLowerCase().indexOf(val.toLowerCase())) > -1
+          // || (item.strState != null && item.strState.toLowerCase().indexOf(val.toLowerCase())) > -1
+          // || (item.strCountry != null && item.strCountry.toLowerCase().indexOf(val.toLowerCase())) > -1);
       })
     }
   }
