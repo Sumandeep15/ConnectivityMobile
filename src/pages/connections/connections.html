@@ -10,7 +10,7 @@
 <ion-content>
     <!--=============  Listing  ==============-->
 
-    <section class="listing-wrapper mg-top-30">
+    <section class="listing-wrapper ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -21,7 +21,7 @@
                                     <li>
                                         <figure>
                                             <a>
-                                                <img alt="No Image"  onError="this.src='../../assets/images/no-image.png' ;" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{item.imagePath}}">
+                                                <img alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{item.imagePath}}">
                                             </a>
                                         </figure>
                                         <div class="inner-content">
@@ -33,11 +33,11 @@
 
                                         <div class="share-btn">
 
-                                            <button (click)="viewCompany(item)" class="btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light view-btnclass">
-                                                View
+                                            <button (click)="viewCompany(item)" class="btn circle-btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light view-btnclass">
+                                                <ion-icon name="eye" class="font-21"></ion-icon>
                                             </button>
-                                            <button (click)="removeItem(item)" class="btn btn-info btn-sm favourite-btns remove-btn share-btns pull-left group-btns waves-effect waves-light">
-                                                Remove
+                                            <button (click)="removeItem(item)" class="btn circle-btn btn-info btn-sm favourite-btns remove-btn share-btns pull-left group-btns waves-effect waves-light">
+                                                <ion-icon name="trash" class="font-21"></ion-icon>
                                             </button>
 
                                         </div>

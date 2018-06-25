@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content>
 
-    <section class="listing-wrapper mg-top-30">
+    <!--<section class="listing-wrapper mg-top-30">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -17,7 +17,7 @@
                                         <div class="col-md-8">
                                             <div class="event-img-wrapper" style="margin-top: 5px">
                                                 <figure>
-                                                    <img onError="this.src='../../assets/images/no-image.png' ;" src="{{apiUrl}}{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
+                                                    <img src="{{apiUrl}}{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
                                                 </figure>
                                             </div>
                                         </div>
@@ -26,10 +26,8 @@
                                                 <h5>
                                                     <a>{{currentItem.activityName}}</a>
                                                 </h5>
-                                                <!--<p><i class="fa fa-location-arrow events-icons"></i> Surrey ( Canada )</p>-->
                                                 <p>
                                                     <i class="fa fa-clock-o events-icons"></i> {{currentItem.strStartDate}}- {{currentItem.strEndDate}}</p>
-                                                <!--<p><i class="fa fa-user events-icons"></i> Balwant Singh</p>-->
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -50,5 +48,30 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <ion-card class="card card-md">
+        <ion-card-content class="card-content card-content-md">
+            <img class="tabs-thumb wp-post-image group-t-img" src="{{apiUrl}}{{currentItem.companyImage}}">
+            <ion-card-title class="card-title card-title-md">
+                <div class="col-md-4">
+                    <div class="inner-content event-name">
+                        <h5>
+                            <a>{{currentItem.activityName}}</a>
+                        </h5>
+                        <!--<p><i class="fa fa-location-arrow events-icons"></i> Surrey ( Canada )</p>-->
+                        <p>
+                            <i class="fa fa-clock-o events-icons"></i> {{currentItem.strStartDate}}- {{currentItem.strEndDate}}</p>
+                        <!--<p><i class="fa fa-user events-icons"></i> Balwant Singh</p>-->
+                    </div>
+                </div>
+            </ion-card-title>
+            <div class="event-content">
+                <p class="event-details" [innerHTML]="currentItem.activityDetail">
+
+                </p>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>

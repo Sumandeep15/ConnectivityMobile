@@ -12,15 +12,18 @@
                                         <div class="col-md-8">
                                             <div class="event-img-wrapper">
                                                 <figure>
-                                                    <img onError="this.src='../../assets/images/no-image.png' ;" srcset="{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
+                                                    <img srcset="{{currentItem.companyImage}}" title="" alt="event" class="img-fluid z-depth-1-half">
                                                 </figure>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="inner-content event-name">
-                                                <h5><a >{{currentItem.name}}</a></h5>
+                                                <h5>
+                                                    <a>{{currentItem.name}}</a>
+                                                </h5>
                                                 <!--<p><i class="fa fa-location-arrow events-icons"></i> Surrey ( Canada )</p>-->
-                                                <p><i class="fa fa-clock-o events-icons"></i> {{currentItem.startTime}}- {{currentItem.endTime}}</p>
+                                                <p>
+                                                    <i class="fa fa-clock-o events-icons"></i> {{currentItem.startTime}}- {{currentItem.endTime}}</p>
                                                 <!--<p><i class="fa fa-user events-icons"></i> Balwant Singh</p>-->
                                             </div>
                                         </div>
@@ -44,5 +47,6 @@
             </div>
         </div>
     </section>
+
 
 </ion-content>

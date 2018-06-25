@@ -11,6 +11,7 @@
 
     <ion-searchbar [showCancelButton]="shouldShowCancel" (ionInput)="getItems($event)" (ionCancel)="initializeItems($event)">
     </ion-searchbar>
+    <ion-content overflow-scroll="true">
     <section class="listing-wrapper ">
         <div class="container">
             <div class="row">
@@ -23,7 +24,7 @@
                                         <figure>
                                             <a>
                                                     <img alt="No Image" cache="true"  class="tabs-thumb wp-post-image group-t-img"
-                                                         onError="this.src='../../assets/images/no-image.png' ;" src="{{apiURL}}{{item.imagePath}}">
+                                                         src="{{apiURL}}{{item.imagePath}}">
                                                 
                                             </a>
                                         </figure>
@@ -35,11 +36,11 @@
                                         </div>
 
                                         <div class="share-btn">
-                                            <button (click)="viewCompany(item)" class="btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light">
-                                                View
+                                            <button (click)="viewCompany(item)" class="btn circle-btn custom-btn btn-sm favourite-btns share-btns view-btns group-btns waves-effect waves-light">
+                                                <ion-icon name="eye" class="font-21"></ion-icon>
                                             </button>
                                             <button (click)="addItem(item)" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">
-                                                Join
+                                                <i class="fa fa-handshake-o font-21" aria-hidden="true"></i>
                                             </button>
                                         </div>
                                     </li>
@@ -52,4 +53,5 @@
             </div>
         </div>
     </section>
+    </ion-content>
 </ion-content>

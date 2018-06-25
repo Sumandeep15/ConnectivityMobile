@@ -105,7 +105,7 @@ export class OrganizationsPage {
               },
               {
                 text: 'Cancel',
-                role: 'cancel',
+                
                 handler: () => {
                   this.alertexit = undefined;
                 }

@@ -14,6 +14,10 @@
                 padding: 0;
             }
 
+            .font-17 {
+                font-size: 17px !important;
+            }
+
             .paddingclass {
                 padding-left: 7px;
             }
@@ -509,11 +513,25 @@
             }
 
             .favourite-btns.share-btns.view-btnclass {
-                right: 28% !important;
+                right: 17% !important;
+            }
+
+            .fa-handshake-o:before {
+                content: "\f2b5";
             }
 
             .remove-btn {
-                width: 23% !important;
+                width: auto !important;
+            }
+
+            .font-21 {
+                font-size: 21px !important;
+                color: #fff !important;
+            }
+
+            .circle-btn {
+                padding: 11px 14px !important;
+                border-radius: 50% !important;
             }
 
             .event-name p,
@@ -1599,10 +1617,24 @@
                 bottom: -17%;
             }
 
+            .error-card {
+                min-height: 250px !important;
+                background: rgb() !important;
+                background: rgb(255, 255, 255, 0.3) !important;
+            }
+
+            .error-message {
+                font-size: 22px !important;
+                text-align: center !important;
+                padding: 93px 0 0 0 !important;
+                font-weight: 600 !important;
+            }
+
             .widget-list li figure img.group-t-img {
                 width: 48px;
                 height: 47px;
                 margin-right: 13px;
+                border: 1px solid #ffa500
             }
 
             /*-- //inner_sec --*/

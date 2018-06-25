@@ -73,7 +73,7 @@ export class MyApp {
     // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
-
+      splashScreen.show();
       //  var myVar = setInterval(alertFunc, 6000);
 
       // platform.registerBackButtonAction(() => {
@@ -182,13 +182,11 @@ export class MyApp {
   }
 
   openPage(page) {
-    if (page.component == "OrganizationsPage" || page.component == "ConnectionsPage")
-    {
+    if (page.component == "OrganizationsPage" || page.component == "ConnectionsPage") {
       this.GlobalVars.previousView.push(page.component);
       this.nav.setRoot(page.component);
     }
-    else if (page.component == "LogoutPage")
-    {
+    else if (page.component == "LogoutPage") {
       if (this.alertexit == undefined) {
         this.alertexit = this.alertCtrl.create({
           title: 'Logout',
@@ -214,9 +212,9 @@ export class MyApp {
         this.alertexit.present();
       }
     }
-    else{
+    else {
       this.nav.setRoot(page.component);
-    }    
+    }
 
   }
 

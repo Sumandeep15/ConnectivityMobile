@@ -21,7 +21,7 @@
                                         <div class="col-md-8">
                                             <div class="event-img-wrapper">
                                                 <figure>
-                                                    <img onError="this.src='../../assets/images/no-image.png ';" alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{currentItem.imagePath}}">
+                                                    <img  alt="No Image" class="tabs-thumb wp-post-image group-t-img" src="{{apiURL}}{{currentItem.imagePath}}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -40,7 +40,7 @@
 
                                             </div>
                                             <div *ngIf="!globalVar" class="share-btn">
-                                                <button (click)="addItem()" class="btn btn-info btn-sm favourite-btns share-btns pull-left group-btns waves-effect waves-light">
+                                                <button (click)="addItem()" class="btn btn-info btn-md font-17 waves-effect waves-light">
                                                     Join
                                                 </button>
 
