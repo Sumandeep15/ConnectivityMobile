@@ -55,7 +55,7 @@ export class SignupPage {
 
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.SEND_SMS).then(success => {
       if (success.hasPermission) {
-        console.log('Permission already granted');
+        // console.log('Permission already granted');
         this.CheckPhonePermissions();
       } else {
         this.alertctrl.create({
@@ -79,7 +79,7 @@ export class SignupPage {
   CheckPhonePermissions() {
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(success => {
       if (success.hasPermission) {
-        console.log('Permission already granted');
+        // console.log('Permission already granted');
         this.doSignup();
       } else {
         this.alertctrl.create({

@@ -34,14 +34,13 @@ export class ConnectionsPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    public platform:Platform,
+    public platform: Platform,
     public user: User,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     public GlobalVars: GlobalVars,
     private alertCtrl: AlertController,
     public events: Events) {
-
     this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url
     let loadingPopup = this.loadingCtrl.create({
@@ -71,10 +70,7 @@ export class ConnectionsPage {
   delete(item: any) {
     this.currentItems.splice(this.currentItems.indexOf(item), 1);
   }
-  ionViewDidLoad() {
-
-    // console.log('ionViewDidLoad ConnectionsPage');
-  }
+  
 
   viewEvents(id) {
     this.navCtrl.push(EventsPage, { 'id': id })
@@ -87,43 +83,70 @@ export class ConnectionsPage {
   removeItem(item) {
 
     this.AppUserModel.OrganizationId = item.id;
+    this.alertCtrl.create({
+      title: 'Are You Sure',
+      subTitle: 'Remove <stong>'+ item.name +"<strong>.",
+      buttons: [{
+        text: 'Yes',
+        handler: () => 
+        {
+          let loadingPopup = this.loadingCtrl.create({
+            content: 'Processing...'
+          });
+          loadingPopup.present();//Loader
+          
+          this.Connections.unlinkOrganization(this.AppUserModel).subscribe((resp) => {
+            if (resp) {
+              setTimeout(() => {
+                loadingPopup.dismiss();
+              }, 500);
+              this.currentItems.splice(this.currentItems.indexOf(item), 1);
+
+              let toast = this.toastCtrl.create({
+                message: 'Removed Successfully.',
+                duration: 3000,
+                position: 'top'
+              });
+              toast.present();
+            }
+          }, (err) => {
+
+            this.navCtrl.push("LoginPage");
+
+            // Unable to sign up
+            let toast = this.toastCtrl.create({
+              message: "error",
+              duration: 3000,
+              position: 'top'
+            });
+            toast.present();
+          });
+        }
+      },
+      {
+        text: 'No',
+        role: 'cancel',
+      }]
+    }).present();
     //alert(this.device.uuid);
     // this.account.UUID = this.device.uuid;
     // Attempt to login in through our User service
-    let loadingPopup = this.loadingCtrl.create({
-      content: 'Processing...'
-    });
-    loadingPopup.present();//Loader
-    this.Connections.unlinkOrganization(this.AppUserModel).subscribe((resp) => {
-      if (resp) {
-        setTimeout(() => {
-          loadingPopup.dismiss();
-        }, 500);
-        this.currentItems.splice(this.currentItems.indexOf(item), 1);
 
-        let toast = this.toastCtrl.create({
-          message: 'Removed Successfully.',
-          duration: 3000,
-          position: 'top'
-        });
-        toast.present();
-      }
-    }, (err) => {
 
-      this.navCtrl.push("LoginPage");
-
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: "error",
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
-    
   }
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);
     this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
+  }
+  ionViewDidLoad() {
+
+  }
+  ionViewDidEnter() {
+    this.GlobalVars.currentpage = "ConnectionsPage";
+    
+  }
+  ionViewWillLeave() {
+    this.GlobalVars.currentpage = null;
+    
   }
 }

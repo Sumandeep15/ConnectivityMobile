@@ -37,4 +37,5 @@ export class LogoutPage {
     this.GlobalVars.CompanyView = false;
     this.navCtrl.setRoot("WelcomePage");
   }
+  
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers';
 
 /**
  * Generated class for the ServicesDetailsPage page.
@@ -14,8 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'services-details.html',
 })
 export class ServicesDetailsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  curentItem: any;
+  apiURL: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+    this.apiURL = api.url;
+    this.curentItem = this.navParams.data;
+    console.log(this.apiURL+this.curentItem);
   }
 
   ionViewDidLoad() {

@@ -29,12 +29,12 @@ export class EventsDetailPage {
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
     this.currentItem = this.AppUserModel;
     this.apiUrl = api.url;
-    console.log("current event")
-    console.log(this.currentItem);
+    // console.log("current event")
+    // console.log(this.currentItem);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventsDetailPage');
+    // console.log('ionViewDidLoad EventsDetailPage');
   }
 
 }

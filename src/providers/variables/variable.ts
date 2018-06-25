@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 export class GlobalVars {
   myGlobalVar: any;
   CompanyView: any = false;
+  previousView:string[] = new Array();
+  currentpage:string;
   constructor() {
     this.myGlobalVar = "";
   }

@@ -26,7 +26,7 @@ export class ScheduleDetailPage {
     this.AppUserModel = this.navParams.get('record');
     // this.Events.GetCompanyActivity(this.AppUserModel).subscribe((resp: any) => {
     this.currentItem = this.AppUserModel;
-    console.log(this.currentItem);
+    // console.log(this.currentItem);
     //  }, (err) => {
 
     // });

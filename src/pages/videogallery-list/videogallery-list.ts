@@ -53,8 +53,8 @@ private platform:Platform,
         }, 500);
 
         this.currentItems = resp.data;
-        console.log("VideoGalleryList");
-        console.log(JSON.stringify(this.currentItems));
+        // console.log("VideoGalleryList");
+        // console.log(JSON.stringify(this.currentItems));
 
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({

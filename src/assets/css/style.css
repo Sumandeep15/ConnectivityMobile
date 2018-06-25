@@ -14,6 +14,10 @@
                 padding: 0;
             }
 
+            .paddingclass {
+                padding-left: 7px;
+            }
+
             .faclass {
                 font-size: 25px !important;
             }
@@ -25,6 +29,20 @@
             .notification-card p {
                 width: auto !important;
                 height: auto !important;
+            }
+
+            .card-pgallery {
+                margin-top: 12px;
+            }
+
+            .card-vgallery {
+                margin-bottom: 15px;
+            }
+
+            .nottify {
+                font-size: 14px !important;
+                margin: -16px 0 14px 0 !important;
+                text-transform: uppercase;
             }
 
             .notification-details {

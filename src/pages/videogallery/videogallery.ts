@@ -39,8 +39,9 @@ export class VideogalleryPage {
 
     this.AppUserModel.OrganizationId = this.GlobalVars.getMyGlobalVar().id;
     this.currentItems = this.navParams.data;
-    console.log("One gallery");
-    console.log(this.currentItems);
+    
+      console.log("One gallery");
+    console.log(JSON.stringify(this.currentItems));
     
     
 

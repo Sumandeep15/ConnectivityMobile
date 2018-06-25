@@ -51,8 +51,8 @@ export class NotificationsPage {
         setTimeout(() => {
           this.loadingPopup.dismiss();
         }, 500);
-        console.log(this.AppUserModel);
-        console.log(JSON.stringify(this.currentItems));//Data
+        // console.log(this.AppUserModel);
+        // console.log(JSON.stringify(this.currentItems));//Data
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
             title: 'Message',
@@ -70,13 +70,19 @@ export class NotificationsPage {
   onTouch(data) {
     this.navCtrl.push("NotificationsDetailsPage", data)
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationsPage');
-  }
-  ionViewWillLeave() {
-    this.loadingPopup.dismiss();
-  }
   viewDetail(item) {
     this.navCtrl.push("NotificationsDetailPage", { 'record': item })
   }
+
+  ionViewDidLoad() {
+    // console.log('ionViewDidLoad NotificationsPage');
+  }
+  ionViewDidEnter() {
+    this.GlobalVars.currentpage = "NotificationsPage";
+  }
+  ionViewWillLeave() {
+    this.loadingPopup.dismiss();
+    this.GlobalVars.currentpage = null;
+  }
+
 }

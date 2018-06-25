@@ -53,7 +53,6 @@ export class OrganizationsPage {
 
 
 
-
     this.Organizations.list().subscribe((resp: any) => {
       setTimeout(() => {
         loadingPopup.dismiss();
@@ -69,11 +68,31 @@ export class OrganizationsPage {
     }, (err) => {
 
     });
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
     this.platform.registerBackButtonAction(() => {
-      if (this.navCtrl.canGoBack()) {
+      if (this.navCtrl.canGoBack()) // if on any third page
+      {
         this.navCtrl.pop();
       }
-      else {
+      else if (this.GlobalVars.currentpage == "NotificationsPage")//Go to last opened page
+      {
+        let last = this.GlobalVars.previousView.pop();
+        if (last == null || last ==  "")
+        {
+          this.navCtrl.setRoot("OrganizationsPage");
+        }
+        else
+        {
+          this.navCtrl.setRoot(last);
+        }
+      }
+      else if (this.GlobalVars.currentpage == "ConnectionsPage")// Go to home page
+      {
+        this.navCtrl.setRoot("OrganizationsPage");
+      }
+      else if (this.GlobalVars.currentpage == "OrganizationsPage" || this.GlobalVars.currentpage == "WelcomePage" ) //ask for exit
+      {
         if (this.alertexit == undefined) {
           this.alertexit = this.alertCtrl.create({
             title: 'Exit Application',
@@ -94,11 +113,19 @@ export class OrganizationsPage {
             ]
           }).present();
         }
-
+        else {
+          this.alertexit.present();
+        }
       }
-
-
-
+      else if (this.GlobalVars.CompanyView == false) //if unjoined company => Home
+      {
+        this.navCtrl.setRoot("OrganizationsPage");
+      }
+      else if (this.GlobalVars.CompanyView == true) // if joined company => Connection
+      {
+        this.navCtrl.setRoot("ConnectionsPage");
+      }// don't change before this
+      
     }, 1);
   }
   initializeItems(ev: any) {
@@ -122,10 +149,7 @@ export class OrganizationsPage {
       })
     }
   }
-  ionViewDidLoad() {
 
-    // console.log('ionViewDidLoad ConnectionsPage');
-  }
   delete(item: any) {
     this.currentItems.splice(this.currentItems.indexOf(item), 1);
   }
@@ -174,7 +198,10 @@ export class OrganizationsPage {
   viewCompany(item) {
     this.GlobalVars.setMyGlobalVar(item);
     this.GlobalVars.CompanyView = false;
-    this.navCtrl.setRoot("OrganizationDetailPage", { 'record': item })
+    this.navCtrl.setRoot("OrganizationDetailPage", item)
+    console.log(JSON.stringify(item));
+    console.log(item);
+
   }
   /**
    * Navigate to the detail page for this item.
@@ -184,5 +211,16 @@ export class OrganizationsPage {
       item: item
     });
   }
+  ionViewDidLoad() {
 
+    // console.log('ionViewDidLoad ConnectionsPage');
+  }
+  ionViewDidEnter() {
+    // this.GlobalVars.previousView.push("OrganizationsPage");
+    this.GlobalVars.currentpage = "OrganizationsPage";
+
+  }
+  ionViewWillLeave() {
+    this.GlobalVars.currentpage = null;
+  }
 }
