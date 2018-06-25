@@ -23,8 +23,8 @@ export class OrganizationDetailPage {
     contactUs: any
   } = {
 
-      aboutUs: "-",
-      contactUs: "-"
+      aboutUs: "",
+      contactUs: ""
     };
   globalVar: any;
   constructor(public events: Events,

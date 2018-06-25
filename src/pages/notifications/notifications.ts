@@ -51,8 +51,8 @@ export class NotificationsPage {
         setTimeout(() => {
           this.loadingPopup.dismiss();
         }, 500);
-        // console.log(this.AppUserModel);
-        // console.log(JSON.stringify(this.currentItems));//Data
+        
+        console.log(JSON.stringify(this.currentItems));//Data
         if (this.currentItems == null || this.currentItems.length < 1) {
           let alert1 = this.alertCtrl.create({
             title: 'Message',

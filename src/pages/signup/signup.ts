@@ -142,6 +142,7 @@ export class SignupPage {
 
 
         // Unable to sign up
+        loadingPopup.dismiss();
         let toast = this.toastCtrl.create({
           message: this.signupErrorString,
           duration: 3000,
@@ -152,7 +153,6 @@ export class SignupPage {
     }
   }
   OTPSignup() {
-    // this.account.UUID = this.device.uuid;
     // Attempt to login in through our User service
     this.user.OTPsignup(this.account).subscribe((resp: any) => {
       if (resp) {

@@ -18,7 +18,7 @@ import { MenuController, LoadingController, AlertController } from 'ionic-angula
   templateUrl: 'schedule.html',
 })
 export class SchedulePage {
-  currentItems: any;
+  currentItems: any = null;
   AppUserModel: { OrganizationId: any } = {
     OrganizationId: 0
   };
