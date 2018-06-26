@@ -25,6 +25,7 @@ export class ServicesPage {
     OrganizationId: 0
   };
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Service: Services,
     public navCtrl: NavController,
@@ -50,12 +51,14 @@ export class ServicesPage {
       //   alert("aa")
       // alert(this.currentItems.length)
       if (this.currentItems == null || this.currentItems.length < 1) {
-        let alert1 = this.alertCtrl.create({
-          title: 'Message',
-          subTitle: 'Record not found.',
-          buttons: ['OK']
-        });
-        alert1.present();
+        this.data = true;
+        this.currentItems = null;
+        // let alert1 = this.alertCtrl.create({
+        //   title: 'Message',
+        //   subTitle: 'Record not found.',
+        //   buttons: ['OK']
+        // });
+        // alert1.present();
       }
     }, (err) => {
 
@@ -64,7 +67,7 @@ export class ServicesPage {
   }
   onClk(data) {
     console.log(JSON.stringify(data));
-    this.navCtrl.push("ServicesDetailsPage",data);
+    this.navCtrl.push("ServicesDetailsPage", data);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');

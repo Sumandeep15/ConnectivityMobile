@@ -27,6 +27,7 @@ export class GalleryListPage {
   };
   id: any;
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController,
     public GlobalVars: GlobalVars,
     public navParams: NavParams,
@@ -57,15 +58,15 @@ export class GalleryListPage {
         }, 500);
 
         this.currentItems = resp.data;
-        // console.log("All Galleries");
-        // console.log(JSON.stringify(this.currentItems));
         if (this.currentItems == null || this.currentItems.length < 1) {
-          let alert1 = this.alertCtrl.create({
-            title: 'Message',
-            subTitle: 'Record not found.',
-            buttons: ['OK']
-          });
-          alert1.present();
+          this.data = true;
+          this.currentItems = null;
+          // let alert1 = this.alertCtrl.create({
+          //   title: 'Message',
+          //   subTitle: 'Record not found.',
+          //   buttons: ['OK']
+          // });
+          // alert1.present();
         }
         else {
           // this.galleryType = this.currentItems[0].galleryName
@@ -74,7 +75,7 @@ export class GalleryListPage {
 
       });
     }
-   
+
   }
 
   onCilck(list) {

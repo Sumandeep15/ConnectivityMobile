@@ -9,9 +9,9 @@
 <ion-content class="mg-top-30">
 
     <div class="container">
-        <div class="row">
+        <div *ngIf="this.currentItems != null" class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div *ngIf="currentItems != null" class="card z-depth-1-half ">
+                <div class="card z-depth-1-half ">
                     <div class="card-body">
                         <div class="block">
                             <ul class="widget-list">
@@ -53,14 +53,14 @@
             </div>-->
         </div>
 
-        <div class="card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+        <div *ngIf="this.data == true" class="card z-depth-1-half error-card mg-top-18 mg-bottom-30">
             <div class="card-body ">
                 <div class="block">
                     <ul class="widget-list">
                         <li class="row">
                             <div class="col-md-8">
                                 <div class="error-message">
-                                    Record not found
+                                    No Activities added yet
                                 </div>
                             </div>
                         </li>

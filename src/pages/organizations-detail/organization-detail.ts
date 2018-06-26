@@ -27,6 +27,7 @@ export class OrganizationDetailPage {
       contactUs: ""
     };
   globalVar: any;
+  clicked: boolean = true;
   constructor(public events: Events,
     public navCtrl: NavController,
     public api: Api,
@@ -70,32 +71,33 @@ export class OrganizationDetailPage {
     loadingPopup.present();//Loader
 
     // this.AppUserMode.OrganizationId = this.navParams.data;
-    this.AppUserMode.OrganizationId = this.Item.id; 
-      this.Organizations.linkOrganization(this.AppUserMode).subscribe((resp) => {
-        if (resp) {
-          setTimeout(() => {
-            loadingPopup.dismiss();
-          }, 500);
-          let toast = this.toastCtrl.create({
-            message: 'Joined Successfully.',
-            duration: 3000,
-            position: 'top'
-          });
-          toast.present();
-          this.globalVar = this.GlobalVars.CompanyView;
-        }
-      }, (err) => {
-
-        this.navCtrl.push("LoginPage");
-
-        // Unable to sign up
+    this.AppUserMode.OrganizationId = this.Item.id;
+    this.Organizations.linkOrganization(this.AppUserMode).subscribe((resp) => {
+      if (resp) {
+        setTimeout(() => {
+          loadingPopup.dismiss();
+        }, 500);
         let toast = this.toastCtrl.create({
-          message: "error",
+          message: 'Joined Successfully.',
           duration: 3000,
           position: 'top'
         });
         toast.present();
+        this.clicked = false;
+        this.globalVar = this.GlobalVars.CompanyView;
+      }
+    }, (err) => {
+
+      this.navCtrl.push("LoginPage");
+
+      // Unable to sign up
+      let toast = this.toastCtrl.create({
+        message: "error",
+        duration: 3000,
+        position: 'top'
       });
+      toast.present();
+    });
     this.menu.enable(false, 'menu1');
     this.menu.enable(true, 'menu2');
   }

@@ -25,6 +25,7 @@ export class NewsPage {
   };
   id: any;
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
     public News: News,
     public navCtrl: NavController,
@@ -53,18 +54,20 @@ export class NewsPage {
 
         this.currentItems = resp.data;
         if (this.currentItems == null || this.currentItems.length < 1) {
-          let alert1 = this.alertCtrl.create({
-            title: 'Message',
-            subTitle: 'Record not found.',
-            buttons: ['OK']
-          });
-          alert1.present();
+          this.data = true;
+          this.currentItems = null;
+          // let alert1 = this.alertCtrl.create({
+          //   title: 'Message',
+          //   subTitle: 'Record not found.',
+          //   buttons: ['OK']
+          // });
+          // alert1.present();
         }
       }, (err) => {
 
       });
     }
-  
+
   }
 
   onClick(item) {

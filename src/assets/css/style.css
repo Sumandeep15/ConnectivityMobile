@@ -530,8 +530,13 @@
             }
 
             .circle-btn {
-                padding: 11px 14px !important;
+                padding: 12px 15px !important;
                 border-radius: 50% !important;
+            }
+
+            .circle-btn-join {
+                padding: 10px 11px !important;
+                font-size: 20px !important;
             }
 
             .event-name p,

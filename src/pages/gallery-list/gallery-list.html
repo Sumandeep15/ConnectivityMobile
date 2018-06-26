@@ -15,29 +15,39 @@
 
 
 <ion-content padding>
-  <!-- <div class="card z-depth-1-half"> -->
-  <!-- <div class="card-body"> -->
-  <!-- <div class="row">
-        <div class="col"> -->
-  <div *ngFor="let gal of currentItems">
-    <div>
-      <ion-card (click)="onCilck(gal)">
-        <ion-card-content>
-          <ion-card-title>
-            {{ gal.galleryName }}
-          </ion-card-title>
-          <p style="float: left;">
-            <span>{{ gal.description }} </span>
-          </p>
-          <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
-        </ion-card-content>
-      </ion-card>
-      <!--*ngFor="let img of gal.lst" -->
+  <div *ngIf="currentItems != null">
+    <div *ngFor="let gal of currentItems">
+      <div>
+        <ion-card (click)="onCilck(gal)">
+          <ion-card-content>
+            <ion-card-title>
+              {{ gal.galleryName }}
+            </ion-card-title>
+            <p style="float: left;">
+              <span>{{ gal.description }} </span>
+            </p>
+            <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
 
-      <!-- </div> -->
-      <!-- </div>
-        </div> -->
-      <!-- </div> -->
+  <div *ngIf="this.data == true" class="mg-top-30">
+    <div class="card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+      <div class="card-body ">
+        <div class="block">
+          <ul class="widget-list">
+            <li class="row">
+              <div class="col-md-8">
+                <div class="error-message">
+                  No Photos added yet
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </ion-content>

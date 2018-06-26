@@ -1,42 +1,63 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>News</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
 
     <div class="container">
-        <div class="row" *ngFor="let item of currentItems">
-            <div class="col-2 mg-top-30">
-                <div class="date-wrapper">
-                    <h4 class="text-center">{{item.day}} </h4>
-                    <h6 class="text-center">{{item.month}}</h6>
-                
-                </div>
-            </div>
-            <div class="col-10 col-10 col-10" >
-                <div class="card z-depth-1-half mg-top-30">
-                    <div class="card-body" (click)="onClick(item)">
-                        <div class="block">
-                            <ul class="widget-list">
-                                <li>
-                                    <div  class="inner-content event-name">
-                                        <h4><b>{{item.companyName}}</b></h4>
-                                    </div>
-                                    <p style="float: left;">
-                                        <span> {{item.title}} </span>
-                                    </p>
-                                    <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
+        <div *ngIf="this.currentItems != null">
+            <div class="row" *ngFor="let item of currentItems">
+                <div class="col-2 mg-top-30">
+                    <div class="date-wrapper">
+                        <h4 class="text-center">{{item.day}} </h4>
+                        <h6 class="text-center">{{item.month}}</h6>
 
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
+                <div class="col-10 col-10 col-10">
+                    <div class="card z-depth-1-half mg-top-30">
+                        <div class="card-body" (click)="onClick(item)">
+                            <div class="block">
+                                <ul class="widget-list">
+                                    <li>
+                                        <div class="inner-content event-name">
+                                            <h4>
+                                                <b>{{item.companyName}}</b>
+                                            </h4>
+                                        </div>
+                                        <p style="float: left;">
+                                            <span> {{item.title}} </span>
+                                        </p>
+                                        <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mg-top-60">
+            <div *ngIf="this.data == true" class=" card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+                <div class="card-body ">
+                    <div class="block">
+                        <ul class="widget-list">
+                            <li class="row">
+                                <div class="col-md-8">
+                                    <div class="error-message">
+                                        No News Yet
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

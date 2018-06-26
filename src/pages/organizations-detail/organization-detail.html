@@ -40,7 +40,7 @@
 
                                             </div>
                                             <div *ngIf="!globalVar" class="share-btn">
-                                                <button (click)="addItem()" class="btn btn-info btn-md font-17 waves-effect waves-light">
+                                                <button *ngIf="clicked" (click)="addItem()"  class="btn btn-info btn-md font-17 waves-effect waves-light">
                                                     Join
                                                 </button>
 

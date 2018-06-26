@@ -6,21 +6,44 @@
         <ion-title>Events</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content class="mg-top-30">
-    <ion-card *ngFor="let item of currentItems">
-        <ion-card-content (click)="onclick(item)">
-            <ion-card-title >
-                {{item.activityName}}
-                <p>
-                    <span>{{item.strStartDate}} - {{item.strEndDate}}</span>
-                </p>
 
-            </ion-card-title>
-            <div style="float: left;">
-                <p [innerHTML]="item.activityDetail"></p>
-               
+
+
+<ion-content class="mg-top-30">
+    <div *ngIf="this.currentItems != null" >
+        <ion-card *ngFor="let item of currentItems">
+            <ion-card-content (click)="onclick(item)">
+                <ion-card-title>
+                    {{item.activityName}}
+                    <p>
+                        <span>{{item.strStartDate}} - {{item.strEndDate}}</span>
+                    </p>
+
+                </ion-card-title>
+                <div style="float: left;">
+                    <p [innerHTML]="item.activityDetail"></p>
+
+                </div>
+                <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <div class="container">
+        <div *ngIf="this.data == true" class="card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+            <div class="card-body ">
+                <div class="block">
+                    <ul class="widget-list">
+                        <li class="row">
+                            <div class="col-md-8">
+                                <div class="error-message">
+                                    No Events
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ion-icon  class="arrow-btn" name="arrow-forward"></ion-icon>
-        </ion-card-content>
-    </ion-card>
+        </div>
+    </div>
 </ion-content>

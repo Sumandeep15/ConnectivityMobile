@@ -26,7 +26,7 @@
                                             <b>{{item.subject}}({{item.companyName}})</b>
                                         </h4>
                                         <h4 class="custom-date">
-                                            Recieved on {{item.createdDate | date:'dd/MM/yyyy'}}
+                                            Recieved {{item.strCreatedDate}}
                                         </h4>
                                         <p style="float: left" [innerHTML]="item.detail"></p>
                                         <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
@@ -50,6 +50,23 @@
             <!--<div class="back-btn-wrapper">
                 <a href="#connections" class="btn btn-default z-depth-2"><i class="fa fa-arrow-left"></i> </a>
             </div>-->
+        </div>
+        <div class="mg-top-60">
+            <div *ngIf="this.data == true" class="card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+                <div class="card-body ">
+                    <div class="block">
+                        <ul class="widget-list">
+                            <li class="row">
+                                <div class="col-md-8">
+                                    <div class="error-message">
+                                        No Notifications
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

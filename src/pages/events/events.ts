@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams, Platform } from 'ionic-angular';
 import { Events, User, GlobalVars } from '../../providers/providers';
 import { Device } from '@ionic-native/device';
-import { MenuController, LoadingController ,AlertController} from 'ionic-angular';
+import { MenuController, LoadingController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the OrganizationsPage page.
@@ -25,13 +25,14 @@ export class EventsPage {
   };
   id: any;
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
     public Events: Events,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
-private platform:Platform,
+    private platform: Platform,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
@@ -52,26 +53,27 @@ private platform:Platform,
         this.currentItems = resp.data;
         // console.log("all events");
         // console.log(JSON.stringify(this.currentItems));
-          if (this.currentItems == null || this.currentItems.length < 1) {
-        let alert1 = this.alertCtrl.create({
-          title: 'Message',
-          subTitle: 'Record not found.',
-          buttons: ['OK']
-        });
-        alert1.present();
-      }
+        if (this.currentItems == null || this.currentItems.length < 1) {
+          this.currentItems=null;
+          this.data=true;
+          // let alert1 = this.alertCtrl.create({
+          //   title: 'Message',
+          //   subTitle: 'Record not found.',
+          //   buttons: ['OK']
+          // });
+          // alert1.present();
+        }
       }, (err) => {
 
       });
     }
-   
+
   }
 
-  onclick(item)
-  {
+  onclick(item) {
     // console.log("Click event ");
     // console.log(JSON.stringify(item));
-    this.navCtrl.push("EventsDetailPage",item);
+    this.navCtrl.push("EventsDetailPage", item);
   }
   ionViewDidLoad() {
     // console.log('ionViewDidLoad OrganizationsPage');

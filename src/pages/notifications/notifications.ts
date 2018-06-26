@@ -23,6 +23,7 @@ export class NotificationsPage {
     OrganizationId: 0
   };
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Notifications: Notifications,
     public navCtrl: NavController,
@@ -48,18 +49,21 @@ export class NotificationsPage {
       this.Notifications.GetCompanyNotifications(this.AppUserModel).subscribe((resp: any) => {
 
         this.currentItems = resp.data;
+        console.log(this.currentItems);
         setTimeout(() => {
           this.loadingPopup.dismiss();
         }, 500);
-        
+
         console.log(JSON.stringify(this.currentItems));//Data
         if (this.currentItems == null || this.currentItems.length < 1) {
-          let alert1 = this.alertCtrl.create({
-            title: 'Message',
-            subTitle: 'Record not found.',
-            buttons: ['OK']
-          });
-          alert1.present();
+          this.currentItems = null;
+          this.data = true;
+          // let alert1 = this.alertCtrl.create({
+          //   title: 'Message',
+          //   subTitle: 'Record not found.',
+          //   buttons: ['OK']
+          // });
+          // alert1.present();
         }
       }, (err) => {
 

@@ -26,13 +26,14 @@ export class VideogalleryListPage {
   };
   id: any;
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public GlobalVars: GlobalVars, public navParams: NavParams,
     public Gallery: Gallery,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public user: User,
-private platform:Platform,
+    private platform: Platform,
     private device: Device,
     public menu: MenuController, private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
@@ -57,12 +58,14 @@ private platform:Platform,
         // console.log(JSON.stringify(this.currentItems));
 
         if (this.currentItems == null || this.currentItems.length < 1) {
-          let alert1 = this.alertCtrl.create({
-            title: 'Message',
-            subTitle: 'Record not found.',
-            buttons: ['OK']
-          });
-          alert1.present();
+          this.data = true;
+          this.currentItems = null;
+          // let alert1 = this.alertCtrl.create({
+          //   title: 'Message',
+          //   subTitle: 'Record not found.',
+          //   buttons: ['OK']
+          // });
+          // alert1.present();
         }
       }, (err) => {
 

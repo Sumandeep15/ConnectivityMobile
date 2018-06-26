@@ -73,7 +73,7 @@ export class MyApp {
     // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
-      splashScreen.show();
+      splashScreen.hide();
       //  var myVar = setInterval(alertFunc, 6000);
 
       // platform.registerBackButtonAction(() => {

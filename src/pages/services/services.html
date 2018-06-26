@@ -1,23 +1,42 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>Services</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content class="mg-top-30">
-    <ion-card *ngFor="let item of currentItems" (click)="onClk(item)">
-        <ion-card-content >
-            <ion-card-title>
-                {{item.name}}
+    <div *ngIf="this.currentItems != null">
+        <ion-card *ngFor="let item of currentItems" (click)="onClk(item)">
+            <ion-card-content>
+                <ion-card-title>
+                    {{item.name}}
 
-            </ion-card-title>
-            <p style="float: left">
-                {{item.description}}
-            </p>
-            <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
-        </ion-card-content>
-    </ion-card>
+                </ion-card-title>
+                <p style="float: left">
+                    {{item.description}}
+                </p>
+                <ion-icon class="arrow-btn" name="arrow-forward"></ion-icon>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div class="container">
+        <div *ngIf="this.data == true" class=" card z-depth-1-half error-card mg-top-18 mg-bottom-30">
+            <div class="card-body ">
+                <div class="block">
+                    <ul class="widget-list">
+                        <li class="row">
+                            <div class="col-md-8">
+                                <div class="error-message">
+                                    No Services added yet
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </ion-content>

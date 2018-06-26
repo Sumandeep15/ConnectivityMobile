@@ -23,6 +23,7 @@ export class SchedulePage {
     OrganizationId: 0
   };
   loadingPopup: any;
+  data: boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Schedule: Schedule,
     public navCtrl: NavController,
@@ -50,19 +51,15 @@ export class SchedulePage {
         setTimeout(() => {
           this.loadingPopup.dismiss();
         }, 500);
-        if (this.currentItems == null || this.currentItems.length < 1) {
-          let alert1 = this.alertCtrl.create({
-            title: 'Message',
-            subTitle: 'Record not found.',
-            buttons: ['OK']
-          });
-          alert1.present();
+        if (this.currentItems == null || this.currentItems.length < 1 ) {
+          this.data = true;
+          this.currentItems=null;
         }
       }, (err) => {
 
       });
     }
-   
+
   }
 
   ionViewDidLoad() {

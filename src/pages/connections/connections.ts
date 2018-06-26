@@ -28,6 +28,7 @@ export class ConnectionsPage {
 
     OrganizationId: 0
   };
+  data:boolean = false;
   constructor(public currentItemsnavCtrl: NavController, public navParams: NavParams,
     public Connections: Connections,
     public api: Api,
@@ -58,11 +59,16 @@ export class ConnectionsPage {
         this.navCtrl.push("LoginPage");
       }
       else {
-        // alert("hnji")
-        //$("#settingsTable").append();
         this.currentItems = resp.data;
+        console.log(JSON.stringify(this.currentItems));
+        
+        if (this.currentItems == null || this.currentItems.length < 1)
+        {
+          this.data = true;
+          // this.currentItems = null;
+        }
       }
-      //alert(  JSON.stringify( this.currentItems));
+      
     }, (err) => {
 
     });
