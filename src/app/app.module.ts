@@ -26,7 +26,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { VideoPipe } from "../pipes/video-link/video-link";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 
-
+import { FCM } from '@ionic-native/fcm';
 
 const firebase = {
   // your firebase web config
@@ -90,7 +90,8 @@ Network,
     AndroidPermissions,
     StorageService, News, Schedule, Events, Connections, GlobalVars,
     SMS, Services, AlertController,
-    Gallery, Notifications
+    Gallery, Notifications,
+    FCM,
   ]
 })
 export class AppModule { }

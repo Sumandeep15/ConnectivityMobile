@@ -25,6 +25,7 @@
     "@ionic-native/camera": "4.3.3",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/device": "^4.7.0",
+    "@ionic-native/fcm": "^4.9.0",
     "@ionic-native/network": "^4.7.0",
     "@ionic-native/photo-viewer": "^4.7.0",
     "@ionic-native/sms": "^4.7.0",
@@ -33,8 +34,10 @@
     "@ionic/storage": "2.1.3",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
-    "cordova-android": "7.0.0",
+    "com-sarriaroman-photoviewer": "^1.1.18",
+    "cordova-android": "^6.4.0",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-fcm": "^2.1.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-network-information": "^2.0.1",
@@ -61,7 +64,9 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-network-information": {},
-      "cordova-sms-plugin": {}
+      "cordova-sms-plugin": {},
+      "com-sarriaroman-photoviewer": {},
+      "cordova-plugin-fcm": {}
     },
     "platforms": [
       "android"

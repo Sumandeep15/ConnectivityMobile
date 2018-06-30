@@ -19,6 +19,7 @@ import { SMS } from '@ionic-native/sms';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { GalleryListPage, VideogalleryListPage } from '../pages/pages';
 import { Events } from 'ionic-angular';
+import { FCM } from '@ionic-native/fcm';
 @Component({
   templateUrl: 'app.html',
 
@@ -64,7 +65,8 @@ export class MyApp {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private storage: StorageService,
-    public events: Events) {
+    public events: Events
+    , public fcm: FCM) {
     // alert("ss")
     events.subscribe('company:name', (variable) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
@@ -73,6 +75,24 @@ export class MyApp {
     // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
+      if (this.platform.is('cordova')) {
+        fcm.subscribeToTopic('all');
+        fcm.getToken().then(token => {
+          alert(token);
+        })
+
+        fcm.onNotification().subscribe(data => {
+          alert("Data: " + data);
+          if (data.wasTapped) {
+            alert("Received in background");
+          } else {
+            alert("Received in foreground");
+          };
+        })
+        fcm.onTokenRefresh().subscribe(token => {
+          alert(token);
+        });
+      }
       splashScreen.hide();
       //  var myVar = setInterval(alertFunc, 6000);
 

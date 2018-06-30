@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "148221682004",
+    "firebase_url": "https://testconnectivity-4c749.firebaseio.com",
+    "project_id": "testconnectivity-4c749",
+    "storage_bucket": "testconnectivity-4c749.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148221682004:android:928ac8d80ab5a562",
+        "android_client_info": {
+          "package_name": "com.summi.testconnectivty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148221682004-pjbe004qtguh4mhrb7jtdkegstrp0roc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6VTRzLgJCk9bl0eoB1E9gh3bORolZysM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
