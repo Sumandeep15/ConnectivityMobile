@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, Toast } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, Toast, Platform } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 import { MainPage, LandingPage, HomePage, MenuPage } from '../pages';
 import { Device } from '@ionic-native/device';
-
+import { FCM } from '@ionic-native/fcm';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -19,10 +19,11 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { userName: string, password: string, uuid: string } = {
+  account: { userName: string, password: string, uuid: string, token: string } = {
     userName: '',
     password: '',
-    uuid: ''
+    uuid: '',
+    token: ''
   };
   userpattern = /^\d{8,13}$/;
   // Our translated text strings
@@ -33,16 +34,35 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public menu: MenuController,
-    private device: Device) {
+    private device: Device,
+    private platform: Platform,
+    public fcm: FCM) {
 
     this.menu.enable(false, 'menu1');
     this.menu.enable(false, 'menu2');
+    if (this.platform.is('cordova')) {
+      fcm.subscribeToTopic('all');
+      fcm.getToken().then(token => {
+        this.account.token = token;
+      })
 
+      fcm.onNotification().subscribe(data => {
+        //  alert("Data: " + data);
+        if (data.wasTapped) {
+          alert("Received in background");
+        } else {
+          alert("Received in foreground");
+        };
+      })
+      fcm.onTokenRefresh().subscribe(token => {
+       this.account.token = token;
+      });
+    }
   }
 
   // Attempt to login in through our User service
   doLogin() {
-
+ this.account.token = "ss";
     if (this.account.userName == "" || this.account.password == "") {
       this.toastCtrl.create({
         message: "Please enter all details",

@@ -39,8 +39,14 @@ export class User {
   authenticated(): boolean {
     return this.isLoggedIn;
   }
-  login(accountInfo: any) {
 
+  SetNotoficationToken(params?: any) {
+    //  alert(params)
+    return this.api.post('api/gurudwaraservices/SetNotoficationToken', params).share();
+  }
+
+  login(accountInfo: any) {
+//alert(accountInfo.token);
     let seq = this.api.postsignup('api/gurudwaraservices/login', accountInfo).share();
 
     seq.subscribe((res: any) => {
@@ -91,7 +97,7 @@ export class User {
       }
     }, err => {
       // console.error('ERROR', err);
-      alert('ERROR: '+ err);
+      alert('ERROR: ' + err);
     });
 
     return seq;
@@ -100,11 +106,11 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-   
+
     this.isLoggedIn = false;
-   this._user = null;
+    this._user = null;
     this.cacheService.remove("guser");
-   // alert("cool")
+    // alert("cool")
     //let seq = this.api.post('api/gurudwaraservices/Logout', null).share();
 
   }

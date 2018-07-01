@@ -75,24 +75,7 @@ export class MyApp {
     // alert(this.GlobalVars.myGlobalVar);
 
     platform.ready().then(() => {
-      if (this.platform.is('cordova')) {
-        fcm.subscribeToTopic('all');
-        fcm.getToken().then(token => {
-          alert(token);
-        })
 
-        fcm.onNotification().subscribe(data => {
-          alert("Data: " + data);
-          if (data.wasTapped) {
-            alert("Received in background");
-          } else {
-            alert("Received in foreground");
-          };
-        })
-        fcm.onTokenRefresh().subscribe(token => {
-          alert(token);
-        });
-      }
       splashScreen.hide();
       //  var myVar = setInterval(alertFunc, 6000);
 
