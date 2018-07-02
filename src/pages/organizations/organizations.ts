@@ -27,6 +27,7 @@ export class OrganizationsPage {
 
     OrganizationId: 0
   };
+  loadingPopup = null;
   constructor(public currentItemsnavCtrl: NavController,
     public navParams: NavParams,
     public Organizations: Organizations,
@@ -44,10 +45,10 @@ export class OrganizationsPage {
     private platform: Platform) {
     this.events.publish('company:name', "Connectivity");
     this.apiURL = api.url;
-    let loadingPopup = this.loadingCtrl.create({
+    this.loadingPopup = this.loadingCtrl.create({
       content: 'Processing...'
     });
-    loadingPopup.present();//Loader
+    this.loadingPopup.present();//Loader
     this.menu.enable(true, 'menu1');
     this.menu.enable(false, 'menu2');
 
@@ -55,7 +56,7 @@ export class OrganizationsPage {
 
     this.Organizations.list().subscribe((resp: any) => {
       setTimeout(() => {
-        loadingPopup.dismiss();
+        this.loadingPopup.dismiss();
       }, 500);
 
       if (!user.authenticated) {
@@ -78,12 +79,10 @@ export class OrganizationsPage {
       else if (this.GlobalVars.currentpage == "NotificationsPage")//Go to last opened page
       {
         let last = this.GlobalVars.previousView.pop();
-        if (last == null || last ==  "")
-        {
+        if (last == null || last == "") {
           this.navCtrl.setRoot("OrganizationsPage");
         }
-        else
-        {
+        else {
           this.navCtrl.setRoot(last);
         }
       }
@@ -91,7 +90,7 @@ export class OrganizationsPage {
       {
         this.navCtrl.setRoot("OrganizationsPage");
       }
-      else if (this.GlobalVars.currentpage == "OrganizationsPage" || this.GlobalVars.currentpage == "WelcomePage" ) //ask for exit
+      else if (this.GlobalVars.currentpage == "OrganizationsPage" || this.GlobalVars.currentpage == "WelcomePage") //ask for exit
       {
         if (this.alertexit == undefined) {
           this.alertexit = this.alertCtrl.create({
@@ -105,7 +104,7 @@ export class OrganizationsPage {
               },
               {
                 text: 'Cancel',
-                
+
                 handler: () => {
                   this.alertexit = undefined;
                 }
@@ -125,7 +124,7 @@ export class OrganizationsPage {
       {
         this.navCtrl.setRoot("ConnectionsPage");
       }// don't change before this
-      
+
     }, 1);
   }
   initializeItems(ev: any) {
@@ -143,9 +142,9 @@ export class OrganizationsPage {
       this.currentItems = this.currentItems.filter((item) => {
         //alert(JSON.stringify(item))
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-          // || (item.strCity != null && item.strCity.toLowerCase().indexOf(val.toLowerCase())) > -1
-          // || (item.strState != null && item.strState.toLowerCase().indexOf(val.toLowerCase())) > -1
-          // || (item.strCountry != null && item.strCountry.toLowerCase().indexOf(val.toLowerCase())) > -1);
+        // || (item.strCity != null && item.strCity.toLowerCase().indexOf(val.toLowerCase())) > -1
+        // || (item.strState != null && item.strState.toLowerCase().indexOf(val.toLowerCase())) > -1
+        // || (item.strCountry != null && item.strCountry.toLowerCase().indexOf(val.toLowerCase())) > -1);
       })
     }
   }
@@ -165,6 +164,7 @@ export class OrganizationsPage {
       if (resp) {
         setTimeout(() => {
           loadingPopup.dismiss();
+          loadingPopup = null;
         }, 500);
         this.currentItems.splice(this.currentItems.indexOf(item), 1);
         let toast = this.toastCtrl.create({
@@ -222,5 +222,9 @@ export class OrganizationsPage {
   }
   ionViewWillLeave() {
     this.GlobalVars.currentpage = null;
+    if (this.loadingPopup != null) {
+      this.loadingPopup.dismiss();
+    }
+
   }
 }
