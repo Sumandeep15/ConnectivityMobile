@@ -27,7 +27,7 @@
                             <input placeholder="Full Name" maxlength="40" [pattern]="namepattern" #username="ngModel" type="text" id="materialFormRegisterNameEx" type="text" [(ngModel)]="account.Name" name="Name" class="form-control input custom-text">
                             <!-- <label for="materialFormRegisterNameEx" class="label text-white">Full Name</label> -->
                             <div class="alert  alertnumber alertname" *ngIf="username.errors?.pattern">
-                                 Valid characters are A-Z a-z
+                                Valid characters are A-Z a-z
                             </div>
                         </div>
 

@@ -49,9 +49,9 @@ export class LoginPage {
       fcm.onNotification().subscribe(data => {
         //  alert("Data: " + data);
         if (data.wasTapped) {
-          alert("Received in background");
+      //    alert("Received in background");
         } else {
-          alert("Received in foreground");
+       //   alert("Received in foreground");
         };
       })
       fcm.onTokenRefresh().subscribe(token => {
@@ -62,7 +62,6 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
- this.account.token = "ss";
     if (this.account.userName == "" || this.account.password == "") {
       this.toastCtrl.create({
         message: "Please enter all details",
