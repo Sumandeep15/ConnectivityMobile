@@ -34,12 +34,12 @@ export class MyApp {
     { title: 'Home', component: HomePage },
     { title: 'My Connections', component: ConnectionsPage },
     { title: 'Notifications', component: NotificationsPage },
-    { title: 'Logout', component: "LogoutPage" }
+   // { title: 'Logout', component: "LogoutPage" }
   ]
   pages1: any[] = [
 
     { title: 'Home', component: HomePage },
-    { title: 'My Connections', component: ConnectionsPage },
+  //  { title: 'My Connections', component: ConnectionsPage },
     { title: 'Notifications', component: NotificationsPage },
     { title: 'Events', component: EventsPage },
     { title: 'Activity', component: SchedulePage },
@@ -47,7 +47,7 @@ export class MyApp {
     { title: 'News', component: NewsPage },
     { title: 'Photo Gallery', component: GalleryListPage },
     { title: 'Video Gallery', component: VideogalleryListPage },
-    { title: 'Logout', component: "LogoutPage" }
+   // { title: 'Logout', component: "LogoutPage" }
   ]
 
   alertcon: any;
